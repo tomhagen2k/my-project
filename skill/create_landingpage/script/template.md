@@ -9,6 +9,7 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Action:** Nút "MUA NGAY" màu cam nổi bật ở góc phải.
 
 ## 2. Hero Section
+*   **Tên sản phẩm (BẮT BUỘC hiển thị):** Mặt Nạ Mắt WIS Crystal Smooth Eye Patch *(lấy nguyên văn từ file description, hiển thị dưới dạng badge/tag phía trên Headline)*
 *   **Headline:** ĐÁNH BAY QUẦNG THÂM - ĐÔI MẮT RẠNG RỠ CHỈ SAU 15 PHÚT
 *   **Sub-headline:** Mặt nạ mắt WIS Crystal Smooth - Trải nghiệm "Ice Mask" mát lạnh, xóa tan bọng mắt và nếp nhăn tức thì.
 *   **Media:** Ảnh hũ mặt nạ màu xanh sapphire sang trọng, bên cạnh là những miếng gel pha lê trong suốt.
@@ -32,12 +33,19 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Thành phần 1: Chiết xuất rễ Hoàng Liên.** (Ảnh phía trên: `object-contain`). Giúp thắt chặt cơ da, giảm tình trạng chảy xệ vùng bọng mắt.
 *   **Thành phần 2: Rau má (Centella Asiatica).** (Ảnh phía trên: `object-contain`). Làm dịu tức thì, giảm kích ứng cho vùng da nhạy cảm nhất.
 *   **Thành phần 3: Cải bắp nhăn.** (Ảnh phía trên: `object-contain`). Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ.
+*   **QUY TẮC ẢNH AI TRONG CARD:** Khi dùng `generate_image` tạo ảnh minh họa cho Card, prompt PHẢI yêu cầu nội dung chính (chủ thể, text) nằm tập trung ở vùng trung tâm ảnh với safe margin xung quanh. Chỉ định tỷ lệ khung hình phù hợp với kích thước Card (VD: "landscape 16:9"). Nếu ảnh chứa text, BẮT BUỘC dùng `object-contain` thay vì `object-cover`.
 
 ## 7. Visual Product Gallery
 *   **Lưu ý bộ lọc:** Đã tự động kiểm tra và lọc bỏ các ảnh bị lặp lại thông điệp (chỉ khác màu vỏ).
-*   **Ảnh 1:** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh (Sử dụng `object-cover` cho ảnh bối cảnh/lifestyle).
-*   **Ảnh 2:** Hũ sản phẩm có nắp đậy 2 lớp chắc chắn, tặng kèm thìa lấy mặt nạ vệ sinh.
-*   **Ảnh 3 (AI Generated):** Ảnh Swatch chất gel trên tay người mẫu, được tạo thêm bằng tool `generate_image` để làm phong phú gallery do ảnh gốc nghèo nàn.
+*   **PHÂN LOẠI BẮT BUỘC:** Đã phân loại ảnh thành 3 nhóm: (a) Ảnh sản phẩm thuần túy, (b) Ảnh giải thưởng/bằng sáng chế/chứng nhận, (c) Ảnh infographic. Ảnh nhóm (b) đã được tách riêng thành section "Giải Thưởng & Chứng Nhận Uy Tín" để tối đa hóa uy tín.
+*   **Ảnh 1 (Gallery):** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh (Sử dụng `object-cover` cho ảnh bối cảnh/lifestyle).
+*   **Ảnh 2 (Gallery):** Hũ sản phẩm có nắp đậy 2 lớp chắc chắn, tặng kèm thìa lấy mặt nạ vệ sinh.
+*   **Ảnh 3 (Gallery - AI Generated):** Ảnh Swatch chất gel trên tay người mẫu, được tạo thêm bằng tool `generate_image` để làm phong phú gallery do ảnh gốc nghèo nàn.
+
+## 7b. Giải Thưởng & Chứng Nhận Uy Tín (Tách từ Gallery)
+*   **Nguồn:** Các ảnh nhóm (b) đã được tách ra từ bước phân loại Gallery.
+*   **Thiết kế:** Section riêng biệt với tiêu đề nổi bật, hiển thị các ảnh giải thưởng/bằng sáng chế/chứng nhận bằng `object-contain` để hiển thị đầy đủ.
+*   **Vị trí:** Đặt gần "Trust Badges & Guarantees" hoặc sau "Expert Endorsement" để củng cố lòng tin.
 
 ## 8. Application & Guide
 *   **Bước 1:** Làm sạch mặt và thấm khô.
@@ -54,6 +62,7 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 
 ## 10. Expert Endorsement (Sử dụng ảnh AI chuyên nghiệp)
 *   **Ảnh chuyên gia (AI Generated):** Chân dung một chuyên gia trang điểm nổi tiếng, mặc vest lịch lãm, tay cầm hũ mặt nạ WIS giới thiệu trước ống kính.
+*   **BẮT BUỘC - SẢN PHẨM PHẢI GIỐNG THỰC TẾ:** Khi gọi `generate_image`, đã truyền ảnh sản phẩm gốc vào `ImagePaths` để làm tham chiếu. Prompt mô tả chi tiết bao bì sản phẩm (hình dạng hũ, màu xanh sapphire, logo WIS) để đảm bảo sản phẩm trong tay chuyên gia trùng khớp với sản phẩm thực tế.
 *   **Quote:** "Chúng tôi tin rằng việc chăm sóc vùng da mắt nên là một trải nghiệm thư giãn như tại Spa. WIS mang công nghệ Hydrogel tối tân nhất vào hũ mặt nạ Crystal Smooth để ai cũng có thể trẻ hóa đôi mắt tại nhà." - *Đội ngũ chuyên gia Da liễu WIS.*
 
 ## 11. Feedback Wall (Map chính xác Media)
@@ -98,3 +107,13 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 
 ## 19. Post-Purchase Experience
 *   **Thông báo:** "Đặt hàng thành công! Đội ngũ WIS sẽ liên hệ với bạn trong vòng 15 phút để xác nhận đơn hàng. Cảm ơn bạn đã tin dùng sản phẩm của chúng tôi!"
+
+## 20. Footer (Chân trang & Bản quyền)
+*   **Logo & Thương hiệu:** +WIS+ Professional — *"Khoa học chăm sóc da, trao gửi vẻ đẹp thật"*
+*   **Tên công ty:** Công Ty TNHH Phân Phối Mỹ Phẩm WIS Việt Nam *(placeholder — chủ shop cập nhật)*
+*   **Địa chỉ:** 123 Đường Láng, Quận Đống Đa, Hà Nội *(placeholder)*
+*   **Hotline CSKH:** 1900-6868 *(placeholder)*
+*   **Email hỗ trợ:** support@wisvietnam.com *(placeholder)*
+*   **Liên kết nhanh:** [Về sản phẩm] | [Đánh giá khách hàng] | [Ưu đãi hôm nay] | [Chính sách đổi trả]
+*   **Bản quyền:** © 2025 +WIS+ Vietnam. All rights reserved.
+*   **Lưu ý:** Các thông tin đánh dấu *(placeholder)* cần được chủ shop cập nhật trước khi công khai trang.

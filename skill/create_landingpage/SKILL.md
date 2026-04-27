@@ -30,6 +30,7 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 #### 2. Hero Section (Phần mở đầu bùng nổ)
 *   **Mục đích:** Giữ chân khách hàng trong 3 giây đầu tiên.
 *   **Cấu trúc cụ thể:**
+    *   **Tên sản phẩm (BẮT BUỘC):** Phải hiển thị tên đầy đủ của sản phẩm (lấy từ trường "Tên sản phẩm" trong file `description`) phía trên Headline. Hiển thị dưới dạng badge/tag nhỏ hoặc sub-label để người đọc nhận diện ngay sản phẩm. KHÔNG được bỏ qua hoặc rút gọn tên sản phẩm.
     *   **Headline:** Font chữ đậm, lớn, chứa lợi ích lớn nhất (VD: "Da mịn màng không tì vết suốt 16h").
     *   **Sub-headline:** Giải thích ngắn gọn cách thức đạt được lợi ích đó.
     *   **Media:** Ảnh sản phẩm tách nền lung linh hoặc video ngắn 2-3s giới thiệu tổng quan.
@@ -67,6 +68,11 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Cấu trúc cụ thể:**
     *   Slider hoặc Grid ảnh chất lượng cực cao.
     *   Ảnh chụp các góc: Nắp, thân, đáy, chất kem bên trong, bao bì hộp giấy.
+*   **QUY TẮC PHÂN LOẠI ẢNH BẮT BUỘC (Gallery Classification):**
+    *   AI PHẢI phân tích nội dung từng ảnh trong thư mục dữ liệu và phân loại thành các nhóm: (a) Ảnh sản phẩm thuần túy (chụp góc cạnh, bao bì, chất sản phẩm), (b) Ảnh Giải thưởng / Bằng sáng chế / Chứng nhận, (c) Ảnh Infographic / Thông số kỹ thuật.
+    *   **Ảnh nhóm (b) - Giải thưởng & Bằng sáng chế:** TUYỆT ĐỐI KHÔNG đưa vào Gallery chung. Phải tách ra thành một section riêng biệt (đặt gần section "Trust Badges & Guarantees" hoặc sau "Expert Endorsement") với tiêu đề như "Giải Thưởng & Chứng Nhận Uy Tín" để tối đa hóa tác dụng tạo lòng tin. Ảnh giải thưởng/bằng sáng chế khi đứng riêng sẽ nổi bật và có tác dụng thuyết phục mạnh mẽ hơn rất nhiều so với khi bị trộn lẫn với ảnh sản phẩm.
+    *   **Ảnh nhóm (c) - Infographic:** Có thể dùng trong Gallery nhưng phải sử dụng `object-contain` để hiển thị đầy đủ nội dung.
+    *   **Ảnh nhóm (a):** Đây mới là ảnh chính cho Gallery. Sắp xếp theo trình tự mạch lạc (tổng quan → chi tiết → cận cảnh chất sản phẩm).
 
 #### 8. Application & Guide (Hướng dẫn sử dụng & Chọn mẫu)
 *   **Mục đích:** Giúp khách hàng hình dung việc sử dụng dễ dàng.
@@ -87,6 +93,10 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   **Ảnh chân dung chuyên gia (BẮT BUỘC):** Sử dụng ảnh bác sĩ/chuyên gia trang điểm cầm sản phẩm. Nếu không có, PHẢI dùng `generate_image` để tạo.
     *   Họ tên + Chức danh (Tiến sĩ, Bác sĩ, Makeup Artist).
     *   Đoạn trích dẫn ngắn (Quote) khẳng định sự hài lòng về chất lượng sản phẩm.
+*   **QUY TẮC HÌNH ẢNH SẢN PHẨM TRONG TAY CHUYÊN GIA (Product Accuracy):**
+    *   Khi dùng `generate_image` để tạo ảnh chuyên gia, sản phẩm trong tay chuyên gia PHẢI giống với sản phẩm thực tế đang được quảng bá. AI PHẢI truyền ảnh sản phẩm gốc (từ thư mục dữ liệu đầu vào) vào tham số `ImagePaths` của tool `generate_image` để làm hình ảnh tham chiếu (reference).
+    *   **Prompt phải mô tả chi tiết sản phẩm:** Bao gồm màu sắc bao bì, hình dạng chai/tuýp/hũ, logo thương hiệu, để AI tạo ra hình ảnh sản phẩm trong tay chuyên gia trùng khớp tối đa với sản phẩm thật.
+    *   Tuyệt đối KHÔNG được để sản phẩm trong ảnh chuyên gia trông khác biệt hoàn toàn so với sản phẩm thực tế (sai màu, sai hình dạng, sai nhãn hiệu). Nếu kết quả gen ảnh lần đầu chưa giống, AI PHẢI gen lại với prompt chi tiết hơn.
 
 #### 11. Feedback Wall (Bức tường phản hồi Shopee Style)
 *   **Mục đích:** Tạo lòng tin bằng bằng chứng xã hội thực tế.
@@ -149,6 +159,17 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   Nội dung: "Cảm ơn bạn đã đặt hàng!", "Mã đơn hàng: #12345", "Chúng tôi sẽ gọi điện xác nhận trong vòng 15 phút tới. Hãy chú ý điện thoại nhé!".
     *   Có thể thêm một video ngắn cảm ơn từ chủ shop hoặc hướng dẫn sử dụng nhanh.
 
+#### 20. Footer (Chân trang Công ty & Bản quyền)
+*   **Mục đích:** Tăng độ uy tín pháp lý, cung cấp thông tin liên hệ, hoàn thiện trải nghiệm trang web chuyên nghiệp.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   **Logo & Tên thương hiệu:** Hiển thị logo và slogan ngắn của thương hiệu.
+    *   **Thông tin Công ty:** Tên công ty sở hữu thương hiệu, địa chỉ văn phòng/kho hàng.
+    *   **Thông tin liên hệ:** Số điện thoại CSKH (hotline), địa chỉ Email hỗ trợ.
+    *   **Liên kết nhanh:** Các anchor link đến các section chính (Về sản phẩm, Đánh giá, Khuyến mãi, Chính sách đổi trả).
+    *   **Chính sách:** Dòng chữ nhỏ về Chính sách bảo mật và Điều khoản sử dụng.
+    *   **Bản quyền:** Dòng © [Năm hiện tại] [Tên thương hiệu]. All rights reserved.
+*   **Lưu ý dữ liệu:** Nếu file `description` không cung cấp thông tin công ty, AI PHẢI tự đề xuất thông tin placeholder hợp lý (VD: hotline 1900-xxxx, email support@[thương-hiệu].com) và đánh dấu rõ để chủ shop điền vào sau.
+
 ---
 
 ## 🖼 QUY TẮC XỬ LÝ HÌNH ẢNH & VIDEO CHUYÊN SÂU
@@ -172,6 +193,14 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 ### 4. Quy tắc Bổ sung & Sáng tạo (AI Generation)
 *   **Điều kiện:** Nếu số lượng hình ảnh cung cấp nghèo nàn hoặc bị lặp lại quá nhiều, AI PHẢI dùng công cụ `generate_image`.
 *   **Mục tiêu:** Tạo thêm các ảnh Lifestyle sang trọng, ảnh Swatch (bôi thử lên tay), ảnh Macro cận cảnh chất kem... để làm phong phú phần Gallery và Visual Demo.
+
+### 5. Quy tắc Kích Thước Ảnh AI Phù Hợp Khung Hiển Thị (AI Image Dimension Matching)
+*   **Nguyên tắc cốt lõi:** Khi dùng `generate_image` để tạo ảnh minh họa cho các section sử dụng bố cục Card Grid (như Technology & Ingredients), AI PHẢI đảm bảo ảnh được gen có tỷ lệ khung hình (aspect ratio) và bố cục nội dung phù hợp với vùng hiển thị thực tế trên giao diện.
+*   **QUY TẮC BẮT BUỘC:**
+    *   Nếu Card sử dụng vùng ảnh có chiều cao cố định (VD: `h-48`, `h-56`) với `object-cover`, AI PHẢI gen ảnh có nội dung chính (chủ thể, text nếu có) nằm tập trung ở VÙNG TRUNG TÂM của ảnh, tránh đặt nội dung quan trọng ở các viền/góc vì chúng sẽ bị cắt xén.
+    *   Nếu ảnh AI chứa text (VD: infographic), PHẢI sử dụng `object-contain` thay vì `object-cover` để đảm bảo toàn bộ nội dung được hiển thị.
+    *   **Prompt mô tả phải bao gồm yêu cầu bố cục:** VD: "Nội dung chính nằm ở trung tâm ảnh, không có text quan trọng ở viền ảnh", "Tỷ lệ ngang 16:9", hoặc "Tỷ lệ vuông 1:1" tùy theo khung hiển thị đích.
+*   **Kiểm tra:** Sau khi gen ảnh, AI PHẢI tự xem lại ảnh kết hợp với kích thước vùng hiển thị để đảm bảo không có nội dung quan trọng bị cắt mất. Nếu bị cắt, PHẢI gen lại hoặc chuyển sang dùng `object-contain`.
 
 ---
 
@@ -211,8 +240,9 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Cách xử lý:** Tải về và chọn lọc tất cả ảnh trong phần mô tả sản phẩm.
 *   **Bước thực hiện:** 
     1. Lọc bỏ các ảnh trùng lặp về nội dung text hoặc chỉ khác màu vỏ.
-    2. Nếu ảnh nghèo nàn, BẮT BUỘC dùng `generate_image` để tạo thêm 2-3 ảnh Lifestyle/Macro chất lượng cao (vd: swatch kem, đặt trên nền nước...).
-    3. Sắp xếp theo trình tự mạch lạc để khách hàng có cái nhìn toàn diện.
+    2. **PHÂN LOẠI BẮT BUỘC:** Phân loại ảnh thành 3 nhóm: (a) Ảnh sản phẩm thuần túy, (b) Ảnh giải thưởng/bằng sáng chế/chứng nhận, (c) Ảnh infographic. Ảnh nhóm (b) PHẢI được tách ra thành section riêng "Giải Thưởng & Chứng Nhận" để tối đa hóa tác dụng tạo lòng tin. KHÔNG trộn lẫn ảnh giải thưởng vào Gallery sản phẩm.
+    3. Nếu ảnh nghèo nàn, BẮT BUỘC dùng `generate_image` để tạo thêm 2-3 ảnh Lifestyle/Macro chất lượng cao (vd: swatch kem, đặt trên nền nước...).
+    4. Sắp xếp theo trình tự mạch lạc để khách hàng có cái nhìn toàn diện.
 
 #### 8. Application & Guide (Hướng dẫn sử dụng)
 *   **Cách xử lý:** Lấy các bước hướng dẫn từ nhà sản xuất.
@@ -225,7 +255,8 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 #### 10. Expert Endorsement (Chứng thực chuyên gia)
 *   **Cách xử lý:** Tìm kiếm xem sản phẩm có được bác sĩ hay celeb nào khuyên dùng không.
 *   **QUY TẮC BẮT BUỘC:** Section này phải có hình ảnh chuyên gia đang cầm sản phẩm hoặc đang giới thiệu sản phẩm một cách chuyên nghiệp. 
-*   **Sử dụng AI:** Nếu dữ liệu đầu vào không có ảnh chuyên gia phù hợp, AI PHẢI dùng tool `generate_image` để tạo ra một bức ảnh chân dung chuyên gia cao cấp, mặc đồ bảo hộ/áo blouse, tay cầm sản phẩm hoặc đang thao tác với sản phẩm. 
+*   **Sử dụng AI:** Nếu dữ liệu đầu vào không có ảnh chuyên gia phù hợp, AI PHẢI dùng tool `generate_image` để tạo ra một bức ảnh chân dung chuyên gia cao cấp, mặc đồ bảo hộ/áo blouse, tay cầm sản phẩm hoặc đang thao tác với sản phẩm.
+*   **SẢN PHẨM PHẢI GIỐNG THỰC TẾ:** Khi gen ảnh, AI PHẢI truyền ít nhất 1 ảnh sản phẩm gốc từ thư mục dữ liệu vào tham số `ImagePaths` của `generate_image` để đảm bảo sản phẩm trong tay chuyên gia trùng khớp với sản phẩm thực tế (đúng màu sắc, hình dạng, logo). Prompt phải mô tả chi tiết đặc điểm bao bì sản phẩm.
 *   **Bước thực hiện:** Kết hợp ảnh chân dung chuyên gia (đã gen) với đoạn trích dẫn (Quote) khẳng định sự hài lòng về sản phẩm.
 
 #### 11. Feedback Wall (Bức tường phản hồi Shopee Style)
@@ -415,6 +446,28 @@ Hệ thống phải so sánh kết quả đầu ra với tệp mẫu chuẩn:
 *   **Giải pháp:** 
     *   Phân tích ảnh gốc: Nếu ảnh gốc có text tiếng Trung/tiếng Anh, AI PHẢI sử dụng tool `generate_image` để tạo ra ảnh nền sạch (clean background).
     *   Ưu tiên sử dụng bố cục Split (chia đôi: 1 bên ảnh gốc không đè chữ, 1 bên là khối màu solid chứa text).
+
+### 10. Trộn lẫn ảnh Giải thưởng/Bằng sáng chế vào Gallery sản phẩm (Award Mixing)
+*   **Nguyên nhân:** AI đưa tất cả ảnh từ thư mục dữ liệu vào cùng một Gallery mà không phân loại nội dung, khiến ảnh giải thưởng/bằng sáng chế bị lẫn giữa các ảnh sản phẩm, mất đi tác dụng tạo uy tín.
+*   **QUY TẮC BẮT BUỘC:**
+    *   AI PHẢI xem xét nội dung từng ảnh để nhận diện ảnh giải thưởng, bằng sáng chế, chứng nhận (thường có hình cúp, huy chương, giấy chứng nhận, logo tổ chức kiểm định).
+    *   Các ảnh này PHẢI được tách ra thành một section độc lập (VD: "Giải Thưởng & Chứng Nhận Uy Tín") với thiết kế nổi bật, đặt gần các section tạo lòng tin (Trust Badges, Expert Endorsement).
+    *   KHÔNG BAO GIỜ trộn chung ảnh giải thưởng vào Grid/Slider Gallery sản phẩm.
+
+### 11. Sản phẩm trong ảnh chuyên gia không giống thực tế (Expert Product Mismatch)
+*   **Nguyên nhân:** Khi gen ảnh chuyên gia bằng AI, prompt không mô tả đủ chi tiết sản phẩm hoặc không truyền ảnh sản phẩm gốc làm tham chiếu, dẫn đến sản phẩm trong tay chuyên gia khác hoàn toàn so với sản phẩm thực tế.
+*   **QUY TẮC BẮT BUỘC:**
+    *   Khi gọi `generate_image`, AI PHẢI truyền ít nhất 1 ảnh sản phẩm gốc (chọn ảnh rõ nhất từ thư mục dữ liệu) vào tham số `ImagePaths` để AI gen ảnh có sản phẩm trùng khớp.
+    *   Prompt PHẢI mô tả chi tiết đặc điểm bao bì: hình dạng (tuýp, chai, hũ), màu sắc chủ đạo, vị trí logo, kiểu nắp.
+    *   Sau khi gen, AI PHẢI tự so sánh ảnh kết quả với ảnh sản phẩm gốc. Nếu sản phẩm trông khác biệt rõ rệt, PHẢI gen lại với prompt chi tiết hơn.
+
+### 12. Ảnh AI bị cắt xén nội dung trong Card Layout (AI Image Cropping in Cards)
+*   **Nguyên nhân:** AI gen ảnh có nội dung (text, chủ thể) trải đều khắp bức ảnh, nhưng khi hiển thị trong Card có chiều cao cố định (`h-48`, `h-56`) với `object-cover`, phần viền bị cắt mất khiến text hoặc nội dung quan trọng không hiển thị.
+*   **QUY TẮC BẮT BUỘC:**
+    *   Khi gen ảnh cho Card Grid (như section Technology & Ingredients), prompt PHẢI yêu cầu nội dung chính tập trung ở vùng trung tâm ảnh, để lại biên an toàn (safe margin) xung quanh.
+    *   Nếu ảnh AI chứa text, BẮT BUỘC sử dụng `object-contain` thay vì `object-cover` để không mất nội dung.
+    *   AI PHẢI chỉ định tỷ lệ khung hình phù hợp trong prompt (VD: "landscape 16:9", "square 1:1") để khớp với vùng hiển thị đích.
+    *   Sau khi gen, PHẢI kiểm tra ảnh có bị cắt nội dung khi đặt vào layout hay không. Nếu có, gen lại hoặc điều chỉnh CSS sang `object-contain`.
 ---
 
 ## 🧪 KỊCH BẢN KIỂM THỬ (TEST SCRIPT)
