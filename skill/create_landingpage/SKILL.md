@@ -148,14 +148,29 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   Nội dung: "Cảm ơn bạn đã đặt hàng!", "Mã đơn hàng: #12345", "Chúng tôi sẽ gọi điện xác nhận trong vòng 15 phút tới. Hãy chú ý điện thoại nhé!".
     *   Có thể thêm một video ngắn cảm ơn từ chủ shop hoặc hướng dẫn sử dụng nhanh.
 
-### Bước 2: Xử lý nội dung & Hình ảnh chuyên sâu
+---
 
-Dưới đây là cách thức hệ thống xử lý thông tin từ thư mục đầu vào để tạo ra trang Landing Page:
+## 🖼 QUY TẮC XỬ LÝ HÌNH ẢNH & VIDEO CHUYÊN SÂU
 
-#### 1. Nguyên tắc sử dụng Hình ảnh & Video
-*   **Ưu tiên hàng đầu:** Sử dụng các hình ảnh và video có sẵn trong thư mục người dùng cung cấp.
-*   **Xử lý hậu kỳ:** Phải chỉnh sửa lại ảnh (thêm text, hiệu ứng, điều chỉnh nội dung ảnh) sao cho lung linh và phù hợp với ngữ cảnh của từng section trong Landing Page.
-*   **Sáng tạo bổ sung:** Nếu hình ảnh cung cấp chưa đủ để làm nổi bật tính năng, hệ thống có quyền tạo ra (Generate) các hình ảnh mới phù hợp hơn để thay thế hoặc bổ sung.
+Để đảm bảo trang Landing Page có chất lượng thị giác cao cấp và đồng nhất với dữ liệu khách hàng cung cấp, AI phải tuân thủ nghiêm ngặt các quy tắc sau:
+
+### 1. Nguyên tắc Ưu tiên (Asset Priority)
+*   **Bắt buộc:** Luôn luôn sử dụng các hình ảnh và video có sẵn trong thư mục dữ liệu đầu vào làm tài liệu gốc. 
+*   AI phải duyệt qua toàn bộ folder `images`, `videos` và các tệp đính kèm trong `reviews` để lựa chọn những tệp chất lượng nhất cho từng section.
+
+### 2. Quy tắc Xử lý Hậu kỳ (Post-Processing & Editing)
+*   **Tùy biến:** AI không được bê nguyên ảnh gốc vào trang. Phải thực hiện các thao tác "thiết kế" lại ảnh bao gồm:
+    *   **Thêm Text & Headline:** Đè các thông điệp quan trọng (VD: "Kiềm dầu 36H", "98% hài lòng") lên ảnh sản phẩm.
+    *   **Hiệu ứng thị giác:** Thêm các lớp phủ (Overlays), đổ bóng (Shadows), hoặc hiệu ứng ánh sáng để ảnh trông sang trọng hơn.
+    *   **Cắt ghép (Compositing):** Ghép sản phẩm vào các bối cảnh (Background) cao cấp phù hợp với ngành hàng (VD: Mỹ phẩm đặt trên mặt nước mờ ảo).
+
+### 3. Quy tắc Bổ sung & Sáng tạo (AI Generation)
+*   **Điều kiện:** Chỉ khi số lượng hình ảnh cung cấp trong folder không đủ để hoàn thiện 19 hạng mục nội dung, AI mới được phép sử dụng công cụ `generate_image`.
+*   **Yêu cầu:** Ảnh tự tạo phải có phong cách, màu sắc và ánh sáng tương đồng tuyệt đối với ảnh gốc để không gây cảm giác rời rạc.
+
+---
+
+### Bước 2: Xử lý nội dung & Hình ảnh chuyên sâu (Quy trình thực hiện)
 
 #### 1. Sticky Header (Thanh điều hướng)
 *   **Cách xử lý:** Không lấy trực tiếp từ link. Tự tạo ra dựa trên 3 điểm chạm quan trọng nhất của khách hàng: Thông tin sản phẩm (để hiểu), Phản hồi (để tin), Khuyến mãi (để mua).
