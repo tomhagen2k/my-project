@@ -11,7 +11,10 @@ Biến bất kỳ đường dẫn sản phẩm TMĐT nào thành một trang Lan
 
 ## 🛠 QUY TRÌNH THỰC THI (WORKFLOW)
 
-Khi nhận được đầu vào là một **Đường dẫn Thư mục (Folder Path)**, hệ thống phải thực hiện theo trình tự nghiêm ngặt sau (TUYỆT ĐỐI KHÔNG ĐƯỢC LƯỢC BỎ BẤT KỲ MỤC NÀO):
+Khi nhận được đầu vào là một **Đường dẫn Thư mục (Folder Path)**, hệ thống phải thực hiện theo trình tự nghiêm ngặt sau. 
+
+> [!IMPORTANT]
+> **ĐIỀU KIỆN TIÊN QUYẾT BẮT BUỘC:** Trang Landing Page đầu ra PHẢI HIỂN THỊ ĐỦ 19 HẠNG MỤC NỘI DUNG bên dưới. Việc thiếu sót bất kỳ hạng mục nào (ngay cả khi dữ liệu đầu vào nghèo nàn) đều bị coi là KHÔNG ĐẠT YÊU CẦU. Nếu thiếu dữ liệu, AI PHẢI chủ động sử dụng kiến thức ngành hoặc công cụ `generate_image` để lấp đầy khoảng trống đó.
 
 ### Bước 1: Nghiên cứu & Trích xuất chi tiết từ Thư mục đầu vào
 
@@ -81,19 +84,17 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 #### 10. Expert Endorsement (Chứng thực chuyên gia)
 *   **Mục đích:** Mượn uy tín người nổi tiếng/có chuyên môn để tạo lòng tin.
 *   **Cấu trúc cụ thể:**
-    *   Ảnh chân dung chuyên gia (mặc áo blouse hoặc đồ chuyên dụng).
-    *   Họ tên + Chức danh (Tiến sĩ, Bác sĩ, Celeb).
-    *   Đoạn trích dẫn ngắn (Quote) khẳng định sự hài lòng về sản phẩm.
+    *   **Ảnh chân dung chuyên gia (BẮT BUỘC):** Sử dụng ảnh bác sĩ/chuyên gia trang điểm cầm sản phẩm. Nếu không có, PHẢI dùng `generate_image` để tạo.
+    *   Họ tên + Chức danh (Tiến sĩ, Bác sĩ, Makeup Artist).
+    *   Đoạn trích dẫn ngắn (Quote) khẳng định sự hài lòng về chất lượng sản phẩm.
 
 #### 11. Feedback Wall (Bức tường phản hồi Shopee Style)
 *   **Mục đích:** Tạo lòng tin bằng bằng chứng xã hội thực tế.
-*   **Yêu cầu dữ liệu đầy đủ:** Phải hiển thị toàn bộ nội dung được cung cấp trong thư mục data, bao gồm:
-    *   **Thông tin người đánh giá:** Tên khách hàng (ẩn danh kiểu Shopee VD: `m*****n`).
-    *   **Số sao:** Hiển thị đúng số sao khách hàng đánh giá (VD: 5 sao vàng).
-    *   **Mô tả đánh giá:** Nội dung text thực tế khách hàng viết.
-    *   **Thời gian đánh giá:** Hiển thị ngày giờ đánh giá (VD: 2026-02-13 14:17).
-    *   **Phân loại:** Thông tin loại hàng khách đã mua (VD: Xanh lam-LF110).
-    *   **Bộ Media thực tế:** Hiển thị **TẤT CẢ** ảnh và video đính kèm của từng review đó.
+*   **Yêu cầu dữ liệu đầy đủ:** Phải hiển thị toàn bộ nội dung được cung cấp trong thư mục data.
+*   **QUY TẮC BẮT BUỘC (MAPPING DATA):**
+    *   AI phải duyệt TOÀN BỘ file trong thư mục `review/image_review`.
+    *   Đối với mỗi Review, AI PHẢI lấy TẤT CẢ các file có tiền tố tương ứng (Ví dụ: Nếu có `review1_image1`, `review1_image2`, `review1_image3`, `review1_video.mp4` thì PHẢI đưa toàn bộ 4 file này vào media array của review 1). Tuyệt đối không được bỏ sót bất kỳ tệp nào.
+    *   Bao gồm: Tên ẩn danh (Shopee style), Số sao, Ngày giờ, Phân loại, Mô tả text, và BỘ MEDIA THỰC TẾ đầy đủ.
 
 #### 12. Social Proof Counters (Con số ấn tượng)
 *   **Mục đích:** Tạo hiệu ứng đám đông (FOMO).
@@ -122,11 +123,11 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 16. Integrated Order Form (Form đặt hàng trực tiếp)
 *   **Mục đích:** Giảm tỷ lệ thoát trang khi chuyển hướng giỏ hàng.
-*   **Cấu trúc cụ thể:**
-    *   **Trình chọn sản phẩm:** Phải có ảnh minh họa cho từng Combo ngay trong form.
-    *   **Trường thông tin:** Họ tên, SĐT, Địa chỉ chi tiết.
-    *   **Tính năng Dropdown:** Phải tích hợp API hoặc dữ liệu chọn sẵn **Tỉnh/Thành -> Quận/Huyện -> Phường/Xã** để tránh sai địa chỉ.
-    *   Nút bấm lớn: "XÁC NHẬN ĐẶT HÀNG & NHẬN ƯU ĐÃI".
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   Sử dụng Popup Modal với cấu trúc vững chắc để chống vỡ giao diện: `max-h-[90vh]`. 
+    *   **BẮT BUỘC:** Phải có nút đóng (Icon X) ở góc trên bên phải và cho phép đóng khi nhấn ra vùng overlay bên ngoài.
+    *   Phân chia Modal thành 3 phần rõ ràng: Header (Tiêu đề, cố định), Body (Form nội dung, `overflow-y-auto`), Footer (Nút Submit, cố định).
+    *   Trình chọn sản phẩm, Trường thông tin (Họ tên, SĐT, Địa chỉ), Dropdown 3 cấp (Tỉnh -> Huyện -> Xã).
 
 #### 17. Trust Badges & Guarantees (Cam kết & Bảo hành)
 *   **Mục đích:** Giảm rủi ro cho khách hàng.
@@ -154,19 +155,23 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 Để đảm bảo trang Landing Page có chất lượng thị giác cao cấp và đồng nhất với dữ liệu khách hàng cung cấp, AI phải tuân thủ nghiêm ngặt các quy tắc sau:
 
-### 1. Nguyên tắc Ưu tiên (Asset Priority)
+### 1. Nguyên tắc Ưu tiên & Lọc Trùng (Asset Priority & Filtering)
 *   **Bắt buộc:** Luôn luôn sử dụng các hình ảnh và video có sẵn trong thư mục dữ liệu đầu vào làm tài liệu gốc. 
-*   AI phải duyệt qua toàn bộ folder `images`, `videos` và các tệp đính kèm trong `reviews` để lựa chọn những tệp chất lượng nhất cho từng section.
+*   **Lọc trùng lặp:** AI phải phân tích nội dung ảnh (đặc biệt trong phần Gallery). Nếu các ảnh có chứa văn bản (text) giống hệt nhau hoặc bố cục lặp lại nhàm chán (chỉ khác màu vỏ sản phẩm), AI CHỈ CHỌN 1 ẢNH ĐẠI DIỆN. 
+*   Tuyệt đối không hiển thị một loạt ảnh có chung nội dung text gây cảm giác thiếu chuyên nghiệp.
 
-### 2. Quy tắc Xử lý Hậu kỳ (Post-Processing & Editing)
-*   **Tùy biến:** AI không được bê nguyên ảnh gốc vào trang. Phải thực hiện các thao tác "thiết kế" lại ảnh bao gồm:
-    *   **Thêm Text & Headline:** Đè các thông điệp quan trọng (VD: "Kiềm dầu 36H", "98% hài lòng") lên ảnh sản phẩm.
-    *   **Hiệu ứng thị giác:** Thêm các lớp phủ (Overlays), đổ bóng (Shadows), hoặc hiệu ứng ánh sáng để ảnh trông sang trọng hơn.
-    *   **Cắt ghép (Compositing):** Ghép sản phẩm vào các bối cảnh (Background) cao cấp phù hợp với ngành hàng (VD: Mỹ phẩm đặt trên mặt nước mờ ảo).
+### 2. Quy tắc Xử lý Hậu kỳ & Chèn Text (Strict Text Overlay Rules)
+*   **CẤM ĐÈ TEXT LÊN ẢNH PHỨC TẠP:** Tuyệt đối KHÔNG sử dụng HTML/CSS (absolute positioning) để đè chữ lên trên các bức ảnh gốc ĐÃ CÓ SẴN TEXT hoặc có đồ họa lộn xộn. Nếu AI phát hiện ảnh gốc đã có text (như nhãn chai, hoặc infographic có sẵn), AI PHẢI chủ động xóa các badge đè lên hoặc dùng AI gen lại ảnh sạch.
+*   **Sử dụng Split Layout:** Nếu ảnh gốc có thông tin, hãy dùng bố cục chia đôi (Một bên để ảnh `object-contain`, một bên là khối màu solid chứa văn bản giải thích).
+*   **Tạo ảnh sạch:** Nếu buộc phải chèn text, AI PHẢI dùng tool `generate_image` để tạo ra một bức ảnh có khoảng trống (clean space/background) trước khi đè text.
 
-### 3. Quy tắc Bổ sung & Sáng tạo (AI Generation)
-*   **Điều kiện:** Chỉ khi số lượng hình ảnh cung cấp trong folder không đủ để hoàn thiện 19 hạng mục nội dung, AI mới được phép sử dụng công cụ `generate_image`.
-*   **Yêu cầu:** Ảnh tự tạo phải có phong cách, màu sắc và ánh sáng tương đồng tuyệt đối với ảnh gốc để không gây cảm giác rời rạc.
+### 3. Quy tắc Hiển thị Ảnh (Display Property Rules)
+*   **Ảnh Infographic / Chứa Text:** BẮT BUỘC sử dụng class `object-contain` (hoặc `aspect-auto`) để hiển thị toàn bộ nội dung ảnh, KHÔNG bị cắt xén. Nếu ảnh bị cắt khiến người dùng không đọc được text bên trong, AI PHẢI dùng tool `generate_image` để tạo lại ảnh mới phù hợp hoặc đổi sang ảnh sạch không có text.
+*   **Ảnh Bối cảnh (Lifestyle):** Mới được phép sử dụng `object-cover` và `aspect-square` hoặc `aspect-video`.
+
+### 4. Quy tắc Bổ sung & Sáng tạo (AI Generation)
+*   **Điều kiện:** Nếu số lượng hình ảnh cung cấp nghèo nàn hoặc bị lặp lại quá nhiều, AI PHẢI dùng công cụ `generate_image`.
+*   **Mục tiêu:** Tạo thêm các ảnh Lifestyle sang trọng, ảnh Swatch (bôi thử lên tay), ảnh Macro cận cảnh chất kem... để làm phong phú phần Gallery và Visual Demo.
 
 ---
 
@@ -189,19 +194,25 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 4. Visual Demo (Video/GIF)
 *   **Cách xử lý:** Tìm kiếm video giới thiệu trong gallery Shopee. 
-*   **Bước thực hiện:** Nếu không có video, hệ thống sẽ đề xuất kịch bản cho 1 đoạn GIF ngắn (VD: Cảnh bóc mặt nạ và đắp lên mắt) để tạo sự trực quan.
+*   **QUY TẮC BẮT BUỘC:** Video phải có nội dung tương quan chặt chẽ với tiêu đề/mô tả của section. Nếu section nói về "Chất kem mỏng nhẹ" thì video phải thể hiện cảnh tán kem, không được dùng video cảnh vận chuyển hay đóng gói.
+*   **Bước thực hiện:** Nếu không có video phù hợp, hệ thống sẽ đề xuất kịch bản cho 1 đoạn GIF ngắn hoặc dùng AI để gen nội dung tương ứng.
 
 #### 5. Pain Point & Solution (Nỗi đau & Giải pháp)
-*   **Cách xử lý:** Phân tích các từ khóa về vấn đề mà sản phẩm giải quyết (VD: thâm quầng, bọng mắt, nếp nhăn).
-*   **Bước thực hiện:** Tạo ra sự đối lập bằng cách đặt câu hỏi về nỗi đau (Bạn có đang mệt mỏi vì đôi mắt gấu trúc?) và đưa ra sản phẩm là giải pháp cứu cánh.
+*   **Cách xử lý:** Phân tích các từ khóa về vấn đề mà sản phẩm giải quyết.
+*   **Bước thực hiện:** 
+    1. Tạo ra sự đối lập bằng cách đặt câu hỏi về nỗi đau.
+    2. **QUAN TRỌNG:** Sử dụng ảnh sạch (Không đè text lên ảnh có chi tiết phức tạp). Nếu dùng ảnh Infographic có sẵn text, phải dùng `object-contain`. Tốt nhất nên dùng bố cục Split (Một bên ảnh `object-contain`, một bên text màu solid).
 
 #### 6. Technology & Ingredients (Thành phần & Công nghệ)
 *   **Cách xử lý:** Trích xuất các thành phần chính từ bảng thành phần (Ingredients).
-*   **Bước thực hiện:** Tra cứu công dụng của từng thành phần (VD: Centella Asiatica - làm dịu da) và trình bày dưới dạng ảnh Macro kèm text giải thích khoa học.
+*   **Bước thực hiện (Bố cục chuẩn):** BẮT BUỘC sử dụng dạng **Card Grid Layout**. Mỗi thành phần là một thẻ (Card) độc lập bao gồm: Ảnh minh họa (phía trên) + Tiêu đề + Mô tả chi tiết (phía dưới). Tuyệt đối không sắp xếp ảnh trôi nổi (floating) lộn xộn cạnh văn bản gây mất cấu trúc.
 
 #### 7. Visual Product Gallery (Bộ sưu tập ảnh)
 *   **Cách xử lý:** Tải về và chọn lọc tất cả ảnh trong phần mô tả sản phẩm.
-*   **Bước thực hiện:** Sắp xếp theo trình tự: Ảnh bao bì -> Ảnh chất kem -> Ảnh khi sử dụng để khách hàng có cái nhìn toàn diện.
+*   **Bước thực hiện:** 
+    1. Lọc bỏ các ảnh trùng lặp về nội dung text hoặc chỉ khác màu vỏ.
+    2. Nếu ảnh nghèo nàn, BẮT BUỘC dùng `generate_image` để tạo thêm 2-3 ảnh Lifestyle/Macro chất lượng cao (vd: swatch kem, đặt trên nền nước...).
+    3. Sắp xếp theo trình tự mạch lạc để khách hàng có cái nhìn toàn diện.
 
 #### 8. Application & Guide (Hướng dẫn sử dụng)
 *   **Cách xử lý:** Lấy các bước hướng dẫn từ nhà sản xuất.
@@ -213,14 +224,16 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 10. Expert Endorsement (Chứng thực chuyên gia)
 *   **Cách xử lý:** Tìm kiếm xem sản phẩm có được bác sĩ hay celeb nào khuyên dùng không.
-*   **Bước thực hiện:** Nếu không có, hệ thống sẽ xây dựng phần này dưới dạng "Lời khuyên từ đội ngũ chuyên gia" hoặc trích dẫn các tiêu chuẩn kiểm nghiệm lâm sàng.
+*   **QUY TẮC BẮT BUỘC:** Section này phải có hình ảnh chuyên gia đang cầm sản phẩm hoặc đang giới thiệu sản phẩm một cách chuyên nghiệp. 
+*   **Sử dụng AI:** Nếu dữ liệu đầu vào không có ảnh chuyên gia phù hợp, AI PHẢI dùng tool `generate_image` để tạo ra một bức ảnh chân dung chuyên gia cao cấp, mặc đồ bảo hộ/áo blouse, tay cầm sản phẩm hoặc đang thao tác với sản phẩm. 
+*   **Bước thực hiện:** Kết hợp ảnh chân dung chuyên gia (đã gen) với đoạn trích dẫn (Quote) khẳng định sự hài lòng về sản phẩm.
 
 #### 11. Feedback Wall (Bức tường phản hồi Shopee Style)
-*   **Cách xử lý:** Truy cập phần "Đánh giá" trên Shopee.
+*   **Cách xử lý:** Đồng bộ 100% dữ liệu từ thư mục `review/image_review` được cung cấp.
 *   **Bước thực hiện:** 
-    1.  Lọc lấy 5 đánh giá có tâm nhất (có ảnh và text chi tiết).
-    2.  Lấy ảnh thực tế khách chụp để đảm bảo tính khách quan.
-    3.  Viết lại tên khách dạng ẩn danh (`a*****1`) để giống Shopee 100%.
+    1.  QUY TẮC BẤT DI BẤT DỊCH: Đọc chính xác danh sách file trong thư mục review.
+    2.  Map chính xác file (VD: `review1_video.mp4` và `review1_image1.webp` VÀO ĐÚNG review ID 1). KHÔNG tự ý gán ảnh bừa bãi.
+    3.  Làm ẩn danh tên khách hàng (`a*****1`) và giữ nguyên nội dung text đánh giá thực tế.
 
 #### 12. Social Proof Counters (Con số ấn tượng)
 *   **Cách xử lý:** Lấy số lượng đã bán và điểm đánh giá trung bình từ Shopee.
@@ -239,8 +252,10 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Bước thực hiện:** Cài đặt đồng hồ đếm ngược và thông báo "Chỉ còn X suất quà tặng" để kích thích khách hành động ngay.
 
 #### 16. Integrated Order Form (Form đặt hàng)
-*   **Cách xử lý:** Xây dựng cấu trúc form tối giản.
-*   **Bước thực hiện:** Tích hợp bộ chọn địa chỉ (Tỉnh/Huyện/Xã) và tự động tính toán tổng tiền dựa trên Combo khách chọn.
+*   **Cách xử lý:** Xây dựng Modal Form tối ưu không bao giờ bị vỡ giao diện.
+*   **Bước thực hiện:** 
+    1. Thiết kế Popup chia 3 phần: Header (Fixed), Body (Scroll với `max-h-[80vh]`), Footer (Fixed nút Submit).
+    2. Tích hợp bộ chọn địa chỉ 3 cấp (Tỉnh/Huyện/Xã) và hiển thị trực quan các gói Combo kèm giá tự động tính.
 
 #### 17. Trust Badges & Guarantees (Cam kết)
 *   **Cách xử lý:** Lấy các cam kết của Shop (Yêu thích/Mall) và chính sách trả hàng của sàn.
@@ -318,9 +333,12 @@ Tuyệt đối không gò bó giao diện. Ưu tiên thiết kế "phá vỡ khu
 *   **Màu sắc:** Tự động chọn bảng màu dựa trên ảnh sản phẩm (Color Palette Extraction). Luôn sử dụng `linear-gradient` cho các nút bấm và background để tăng tính thẩm mỹ.
 
 ### 3. Tối ưu Hiển thị & Di động (Mobile-First Enforcement)
+*   **BẮT BUỘC:** Kiểm tra hiển thị trên thiết bị di động (chiều rộng < 450px).
 *   **Navigation:** Trên Mobile (screen < 768px), bắt buộc sử dụng **Hamburger Menu** (Icon 3 gạch) bên phải và Logo bên trái. Tuyệt đối không để text menu tràn lan gây đè chữ.
-*   **Sticky Order Bar:** Khi người dùng cuộn qua Hero Section, một thanh "Mua ngay" mỏng phải xuất hiện cố định ở trên cùng hoặc dưới cùng màn hình (chứa ảnh nhỏ, tên sản phẩm, giá ưu đãi và nút Mua).
-*   **Image Optimization:** Mọi hình ảnh phải được bao bọc trong các thẻ Container có tỉ lệ khung hình (Aspect Ratio) cố định để tránh tình trạng nhảy bố cục (Layout Shift) khi tải trang.
+*   **Typography:** Tiêu đề H1/H2 trên mobile không được vượt quá `text-3xl` hoặc `text-4xl` để tránh tràn dòng/vỡ layout.
+*   **Padding/Gap:** Đảm bảo container trên mobile luôn có `px-4` hoặc `px-6`. Khoảng cách giữa các phần tử (Gap) tối thiểu là `gap-4`.
+*   **Sticky Order Bar:** Khi người dùng cuộn qua Hero Section, một thanh "Mua ngay" mỏng phải xuất hiện cố định ở dưới cùng màn hình (chứa ảnh nhỏ, tên sản phẩm, giá ưu đãi và nút Mua).
+*   **Image Optimization:** Mọi hình ảnh phải được bao bọc trong các thẻ Container có tỉ lệ khung hình (Aspect Ratio) cố định để tránh tình trạng nhảy bố cục (Layout Shift).
 
 ---
 
@@ -346,9 +364,9 @@ Hệ thống phải so sánh kết quả đầu ra với tệp mẫu chuẩn:
 
 ---
 
-## 🚫 CÁC LỖI CẦN TRÁNH (COMMON MISTAKES)
+## 🚫 CÁC LỖI CẦN TRÁNH VÀ QUY TẮC BẮT BUỘC (CRITICAL MISTAKES)
 
-Để đảm bảo hiệu quả chuyển đổi cao nhất, tuyệt đối tránh các sai lầm sau:
+Để đảm bảo hiệu quả chuyển đổi cao nhất và giao diện không bị vỡ/lỗi thẩm mỹ, AI phải tuyệt đối tuân thủ các quy định sau:
 
 ### 1. Về Nội dung (Content)
 *   **Tham chữ (Text-heavy):** Viết quá nhiều đoạn văn dài. Khách hàng thường chỉ lướt xem ảnh và tiêu đề.
@@ -366,6 +384,37 @@ Hệ thống phải so sánh kết quả đầu ra với tệp mẫu chuẩn:
 *   **Nút CTA mờ nhạt:** Nút mua hàng không nổi bật so với nền hoặc bị chìm vào bố cục.
 *   **Lỗi hiển thị di động:** Nội dung bị tràn viền hoặc chữ quá nhỏ trên điện thoại.
 
+### 4. Lặp nội dung trong Gallery
+*   **Nguyên nhân:** Lấy toàn bộ ảnh trong thư mục mà không lọc sự trùng lặp về nội dung/văn bản.
+*   **QUY TẮC BẮT BUỘC:** 
+    *   Bộ lọc thông minh: AI phải kiểm tra nội dung ảnh. Nếu phát hiện các ảnh trùng lặp thông điệp (chỉ khác màu vỏ), chỉ chọn 1 ảnh đại diện.
+    *   Bắt buộc chủ động dùng `generate_image` để tạo thêm các góc chụp mới (VD: Swatch ra tay, chất kem zoom cận cảnh, bối cảnh sang trọng) để làm phong phú Gallery nếu ảnh gốc nghèo nàn.
+
+### 5. Vỡ giao diện Popup Đặt Hàng (Order Modal)
+*   **Nguyên nhân:** Code Modal thiếu giới hạn chiều cao và xử lý overflow khi danh sách Combo dài ra.
+*   **QUY TẮC BẮT BUỘC:** 
+    *   Sử dụng cấu trúc Modal chuẩn: Bắt buộc dùng `max-h-[90vh]`.
+    *   Chia Modal thành 3 phần rõ rệt: Header (fixed), Body (overflow-y-auto), và Footer (chứa nút Submit fixed).
+### 6. Lỗi thiếu hạng mục nội dung (Missing Mandatory Sections)
+*   **Nguyên nhân:** AI bỏ qua các mục như "Expert Endorsement", "Visual Logistics" vì cho rằng không có đủ dữ liệu.
+*   **QUY TẮC BẮT BUỘC:** Landing Page phải có ĐỦ 19 MỤC. Nếu thiếu dữ liệu thực tế, AI phải tự biên soạn nội dung dựa trên tiêu chuẩn chung của ngành (VD: Cam kết chất lượng, Quy trình đóng gói tiêu chuẩn) và dùng ảnh AI để minh họa. Tuyệt đối không được bỏ trống hoặc lược bỏ section.
+
+### 7. Lỗi hiển thị ảnh (Image Distortion)
+*   **Nguyên nhân:** Lạm dụng class `aspect-square` và `object-cover` khiến các ảnh có chứa thông tin ở viền bị cắt xén (crop).
+*   **QUY TẮC BẮT BUỘC:** 
+    *   Với các ảnh mang tính thông tin (Infographic, có chứa text), bắt buộc sử dụng `object-contain` thay vì `object-cover`.
+    *   Chỉ dùng `object-cover` cho các ảnh chụp bối cảnh (Lifestyle) hoặc ảnh nền (Background).
+
+### 8. Bố cục nội dung chưa hợp lý (Layout Logic)
+*   **Nguyên nhân:** Các section như "Bí mật từ đại dương" được chia cột tự do nhưng thiếu sự gắn kết giữa hình ảnh và phần giải thích.
+*   **QUY TẮC BẮT BUỘC:** Tiêu chuẩn hóa bố cục cho section "Công nghệ & Thành phần": Yêu cầu sử dụng dạng **Card Grid** (Mỗi thành phần là một thẻ bao gồm: Ảnh ở trên + Tiêu đề + Mô tả ở dưới) để đảm bảo tính thống nhất. KHÔNG xếp ảnh nổi trôi lộn xộn.
+
+### 9. Lỗi đè Text lên ảnh có sẵn Text (Text Overlap)
+*   **Nguyên nhân:** Đè text lên ảnh mà không kiểm tra ảnh gốc đã có text hay chưa, dẫn đến giao diện bị rối mắt.
+*   **QUY TẮC BẮT BUỘC:** Tuyệt đối KHÔNG đè HTML text (absolute positioning) lên trên các ảnh đã có sẵn text/đồ họa phức tạp.
+*   **Giải pháp:** 
+    *   Phân tích ảnh gốc: Nếu ảnh gốc có text tiếng Trung/tiếng Anh, AI PHẢI sử dụng tool `generate_image` để tạo ra ảnh nền sạch (clean background).
+    *   Ưu tiên sử dụng bố cục Split (chia đôi: 1 bên ảnh gốc không đè chữ, 1 bên là khối màu solid chứa text).
 ---
 
 ## 🧪 KỊCH BẢN KIỂM THỬ (TEST SCRIPT)

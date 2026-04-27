@@ -20,21 +20,24 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Huy hiệu 3:** 100% Cảm giác mát lạnh - Giảm sưng bọng mắt ngay khi chạm vào da.
 
 ## 4. Visual Demo
+*   **QUY TẮC NỘI DUNG:** Video/GIF phải thể hiện ĐÚNG hành động mô tả (VD: tán kem, bóc mặt nạ). Nếu không có video thực tế phù hợp, PHẢI dùng `generate_image` để tạo ảnh thay thế hoặc đổi text mô tả cho khớp với video (VD: giới thiệu bao bì).
 *   **Nội dung Video/GIF:** Cảnh một cô gái bóc miếng mặt nạ gel pha lê màu xanh, đắp nhẹ nhàng lên vùng mắt. Miếng gel ôm sát, không bị rơi khi di chuyển.
 
 ## 5. Pain Point & Solution
 *   **Nỗi đau:** "Bạn mệt mỏi vì đôi mắt 'Gấu Trúc' sau những đêm thức khuya làm việc hay lướt điện thoại?"
 *   **Giải pháp:** WIS Crystal Smooth - Không chỉ là mặt nạ mắt, đó là "liều thuốc bổ" phục hồi sinh khí cho cửa sổ tâm hồn của bạn.
+*   **Lưu ý thiết kế:** Áp dụng bố cục **Split (chia đôi màn hình)**. Tuyệt đối KHÔNG đè HTML text lên ảnh có sẵn text/đồ họa phức tạp. Sử dụng ảnh gốc dạng `object-contain` một bên, bên còn lại là khối màu solid chứa văn bản.
 
-## 6. Technology & Ingredients
-*   **Thành phần 1: Chiết xuất rễ Hoàng Liên.** Giúp thắt chặt cơ da, giảm tình trạng chảy xệ vùng bọng mắt.
-*   **Thành phần 2: Rau má (Centella Asiatica).** Làm dịu tức thì, giảm kích ứng cho vùng da nhạy cảm nhất.
-*   **Thành phần 3: Cải bắp nhăn.** Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ.
+## 6. Technology & Ingredients (Bố cục Card Grid)
+*   **Thành phần 1: Chiết xuất rễ Hoàng Liên.** (Ảnh phía trên: `object-contain`). Giúp thắt chặt cơ da, giảm tình trạng chảy xệ vùng bọng mắt.
+*   **Thành phần 2: Rau má (Centella Asiatica).** (Ảnh phía trên: `object-contain`). Làm dịu tức thì, giảm kích ứng cho vùng da nhạy cảm nhất.
+*   **Thành phần 3: Cải bắp nhăn.** (Ảnh phía trên: `object-contain`). Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ.
 
 ## 7. Visual Product Gallery
-*   **Ảnh 1:** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh.
+*   **Lưu ý bộ lọc:** Đã tự động kiểm tra và lọc bỏ các ảnh bị lặp lại thông điệp (chỉ khác màu vỏ).
+*   **Ảnh 1:** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh (Sử dụng `object-cover` cho ảnh bối cảnh/lifestyle).
 *   **Ảnh 2:** Hũ sản phẩm có nắp đậy 2 lớp chắc chắn, tặng kèm thìa lấy mặt nạ vệ sinh.
-*   **Ảnh 3:** Ảnh chụp các khu vực sử dụng: Trán, mắt, khóe miệng, cổ.
+*   **Ảnh 3 (AI Generated):** Ảnh Swatch chất gel trên tay người mẫu, được tạo thêm bằng tool `generate_image` để làm phong phú gallery do ảnh gốc nghèo nàn.
 
 ## 8. Application & Guide
 *   **Bước 1:** Làm sạch mặt và thấm khô.
@@ -49,13 +52,14 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 | **Đa năng** | Dùng cho mắt, trán, cổ, khóe miệng | Chỉ dùng cho mắt |
 | **Giá trị** | Hũ 60 miếng tiết kiệm | Gói lẻ đắt đỏ |
 
-## 10. Expert Endorsement
+## 10. Expert Endorsement (Sử dụng ảnh AI chuyên nghiệp)
+*   **Ảnh chuyên gia (AI Generated):** Chân dung một chuyên gia trang điểm nổi tiếng, mặc vest lịch lãm, tay cầm hũ mặt nạ WIS giới thiệu trước ống kính.
 *   **Quote:** "Chúng tôi tin rằng việc chăm sóc vùng da mắt nên là một trải nghiệm thư giãn như tại Spa. WIS mang công nghệ Hydrogel tối tân nhất vào hũ mặt nạ Crystal Smooth để ai cũng có thể trẻ hóa đôi mắt tại nhà." - *Đội ngũ chuyên gia Da liễu WIS.*
 
-## 11. Feedback Wall (Shopee Style)
-*   **Khách hàng `c*****t`:** "Mua vì thấy quảng cáo TikTok, dùng thử thấy mát lạnh rất thích, bọng mắt có vẻ bớt sưng sau khi ngủ dậy." (Ảnh: Hộp hàng và hũ mặt nạ).
-*   **Khách hàng `0*****c`:** "Chất gel mềm mịn, đắp lên rất phê. Giao hàng nhanh, shop đóng gói kỹ." (Ảnh: Cận cảnh miếng gel trên tay).
-*   **Khách hàng `t*****u`:** "Đã dùng 1 tuần, thấy mắt đỡ mỏi hơn hẳn, quầng thâm cũng nhạt bớt. Đáng đồng tiền bát gạo." (Ảnh: Selfie khi đang đắp mặt nạ).
+## 11. Feedback Wall (Map chính xác Media)
+*   **Khách hàng `c*****t`:** "Mua vì thấy quảng cáo TikTok, dùng thử thấy mát lạnh rất thích, bọng mắt có vẻ bớt sưng sau khi ngủ dậy." (Media Map: `review1_video.mp4`, `review1_image1.webp`).
+*   **Khách hàng `0*****c`:** "Chất gel mềm mịn, đắp lên rất phê. Giao hàng nhanh, shop đóng gói kỹ." (Media Map: `review2_image1.webp`).
+*   **Khách hàng `t*****u`:** "Đã dùng 1 tuần, thấy mắt đỡ mỏi hơn hẳn, quầng thâm cũng nhạt bớt. Đáng đồng tiền bát gạo." (Media Map: `review3_video.mp4`, `review3_image1.webp`, `review3_image2.webp`).
 
 ## 12. Social Proof Counters
 *   **Số liệu:** "Hơn 8.800+ đánh giá 5 sao từ người dùng Shopee - Đã bán 15.000+ hũ trên toàn khu vực."
@@ -75,9 +79,14 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Đếm ngược:** [Ưu đãi kết thúc sau 00:14:55]
 *   **Thông báo:** "Chỉ còn 24 hũ cuối cùng với giá 140.800đ!"
 
-## 16. Integrated Order Form
-*   **Fields:** Họ tên | Số điện thoại | Combo lựa chọn | Địa chỉ (Tỉnh/Huyện/Xã)
-*   **Button:** [XÁC NHẬN ĐẶT HÀNG - THANH TOÁN KHI NHẬN HÀNG]
+## 16. Integrated Order Form (Cấu trúc chống vỡ max-h-[90vh])
+*   **Cấu trúc UI Bắt Buộc:** 
+    *   Sử dụng Popup Modal chia 3 phần rõ rệt. Đảm bảo padding và gap đủ lớn để trên mobile không bị dính chữ.
+    *   **BẮT BUỘC:** Phải có nút đóng (Icon X) và cho phép đóng khi nhấn ra ngoài vùng Modal (Overlay click).
+*   **Header (Fixed top):** Tiêu đề "Hoàn Tất Đặt Hàng".
+*   **Body (overflow-y-auto):** 
+    * Fields: Họ tên | Số điện thoại | Combo lựa chọn | Địa chỉ (Dropdown: Tỉnh -> Huyện -> Xã)
+*   **Footer (Fixed bottom):** [XÁC NHẬN ĐẶT HÀNG - THANH TOÁN KHI NHẬN HÀNG].
 
 ## 17. Trust Badges & Guarantees
 *   [HOÀN TIỀN 111% NẾU PHÁT HIỆN HÀNG GIẢ]
