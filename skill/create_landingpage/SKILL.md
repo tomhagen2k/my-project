@@ -1,6 +1,6 @@
 # SKILL: CREATE_LANDINGPAGE - XÂY DỰNG LANDING PAGE TỐI ƯU CHUYỂN ĐỔI
 
-Skill này hướng dẫn AI cách thức tiếp nhận một link sản phẩm, phân tích nội dung và xây dựng một trang Landing Page cao cấp sử dụng công nghệ Next.js & Tailwind CSS.
+Skill này hướng dẫn AI cách thức tiếp nhận một **Đường dẫn thư mục (Folder Path)** chứa dữ liệu sản phẩm (Mô tả, Hình ảnh, Video, Đánh giá), phân tích nội dung và xây dựng một trang Landing Page cao cấp sử dụng công nghệ Next.js & Tailwind CSS.
 
 ---
 
@@ -11,11 +11,11 @@ Biến bất kỳ đường dẫn sản phẩm TMĐT nào thành một trang Lan
 
 ## 🛠 QUY TRÌNH THỰC THI (WORKFLOW)
 
-Khi nhận được đầu vào là một **Link Sản Phẩm**, hệ thống phải thực hiện theo trình tự nghiêm ngặt sau (TUYỆT ĐỐI KHÔNG ĐƯỢC LƯỢC BỎ BẤT KỲ MỤC NÀO):
+Khi nhận được đầu vào là một **Đường dẫn Thư mục (Folder Path)**, hệ thống phải thực hiện theo trình tự nghiêm ngặt sau (TUYỆT ĐỐI KHÔNG ĐƯỢC LƯỢC BỎ BẤT KỲ MỤC NÀO):
 
-### Bước 1: Nghiên cứu & Trích xuất chi tiết (19 Nội dung tiêu chuẩn)
+### Bước 1: Nghiên cứu & Trích xuất chi tiết từ Thư mục đầu vào
 
-Tài liệu này quy định chi tiết 19 thành phần nội dung cần thiết để xây dựng một Landing Page bán hàng chuyên nghiệp:
+Hệ thống truy cập thư mục được cung cấp, đọc tất cả các tệp văn bản và xem xét các tệp hình ảnh/video để phân bổ vào 19 hạng mục nội dung tiêu chuẩn:
 
 #### 1. Sticky Header (Thanh điều hướng cố định)
 *   **Mục đích:** Giúp khách hàng truy cập nhanh các phần quan trọng mà không cần cuộn ngược lên.
@@ -87,16 +87,13 @@ Tài liệu này quy định chi tiết 19 thành phần nội dung cần thiế
 
 #### 11. Feedback Wall (Bức tường phản hồi Shopee Style)
 *   **Mục đích:** Tạo lòng tin bằng bằng chứng xã hội thực tế.
-*   **Cấu trúc cụ thể:**
-    *   Hiển thị tối thiểu 3-5 thẻ đánh giá.
-    *   Mỗi thẻ bao gồm:
-        *   Tên khách hàng ẩn danh (VD: `m*****n`).
-        *   Đánh giá 5 sao vàng.
-        *   Phân loại hàng đã mua.
-        *   Nội dung text thực tế: "Shop tư vấn nhiệt tình, hàng dùng rất thích...".
-        *   **Bộ Media thực tế:** 
-            *   Ít nhất 1 Video ngắn (5-10s) quay thực tế sản phẩm.
-            *   Bộ 3 ảnh: 1 ảnh vỏ hộp, 1 ảnh trên tay, 1 ảnh sử dụng thực tế.
+*   **Yêu cầu dữ liệu đầy đủ:** Phải hiển thị toàn bộ nội dung được cung cấp trong thư mục data, bao gồm:
+    *   **Thông tin người đánh giá:** Tên khách hàng (ẩn danh kiểu Shopee VD: `m*****n`).
+    *   **Số sao:** Hiển thị đúng số sao khách hàng đánh giá (VD: 5 sao vàng).
+    *   **Mô tả đánh giá:** Nội dung text thực tế khách hàng viết.
+    *   **Thời gian đánh giá:** Hiển thị ngày giờ đánh giá (VD: 2026-02-13 14:17).
+    *   **Phân loại:** Thông tin loại hàng khách đã mua (VD: Xanh lam-LF110).
+    *   **Bộ Media thực tế:** Hiển thị **TẤT CẢ** ảnh và video đính kèm của từng review đó.
 
 #### 12. Social Proof Counters (Con số ấn tượng)
 *   **Mục đích:** Tạo hiệu ứng đám đông (FOMO).
@@ -151,9 +148,14 @@ Tài liệu này quy định chi tiết 19 thành phần nội dung cần thiế
     *   Nội dung: "Cảm ơn bạn đã đặt hàng!", "Mã đơn hàng: #12345", "Chúng tôi sẽ gọi điện xác nhận trong vòng 15 phút tới. Hãy chú ý điện thoại nhé!".
     *   Có thể thêm một video ngắn cảm ơn từ chủ shop hoặc hướng dẫn sử dụng nhanh.
 
-### Bước 2: Xử lý nội dung chi tiết (Quy trình thực hiện)
+### Bước 2: Xử lý nội dung & Hình ảnh chuyên sâu
 
-Dưới đây là cách thức hệ thống xử lý thông tin từ một link sản phẩm TMĐT (Shopee/Lazada) để tạo ra 19 nội dung chuẩn chuyển đổi:
+Dưới đây là cách thức hệ thống xử lý thông tin từ thư mục đầu vào để tạo ra trang Landing Page:
+
+#### 1. Nguyên tắc sử dụng Hình ảnh & Video
+*   **Ưu tiên hàng đầu:** Sử dụng các hình ảnh và video có sẵn trong thư mục người dùng cung cấp.
+*   **Xử lý hậu kỳ:** Phải chỉnh sửa lại ảnh (thêm text, hiệu ứng, điều chỉnh nội dung ảnh) sao cho lung linh và phù hợp với ngữ cảnh của từng section trong Landing Page.
+*   **Sáng tạo bổ sung:** Nếu hình ảnh cung cấp chưa đủ để làm nổi bật tính năng, hệ thống có quyền tạo ra (Generate) các hình ảnh mới phù hợp hơn để thay thế hoặc bổ sung.
 
 #### 1. Sticky Header (Thanh điều hướng)
 *   **Cách xử lý:** Không lấy trực tiếp từ link. Tự tạo ra dựa trên 3 điểm chạm quan trọng nhất của khách hàng: Thông tin sản phẩm (để hiểu), Phản hồi (để tin), Khuyến mãi (để mua).
@@ -325,7 +327,7 @@ Hệ thống phải so sánh kết quả đầu ra với tệp mẫu chuẩn:
 ---
 
 ## ⚡ CÂU LỆNH KÍCH HOẠT (TRIGGER)
-"Hãy sử dụng skill **create_landingpage** để xây dựng trang Landing Page cho sản phẩm tại link này: [Dán link sản phẩm tại đây]"
+"Hãy sử dụng skill **create_landingpage** để xây dựng trang Landing Page dựa trên dữ liệu trong thư mục này: [Đường dẫn thư mục tại đây]"
 
 ---
 
