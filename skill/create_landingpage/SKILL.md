@@ -244,13 +244,13 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Cách xử lý:** Trích xuất các thành phần chính từ bảng thành phần (Ingredients).
 *   **Bước thực hiện (Bố cục chuẩn):** BẮT BUỘC sử dụng dạng **Card Grid Layout**. Mỗi thành phần là một thẻ (Card) độc lập bao gồm: Ảnh minh họa (phía trên) + Tiêu đề + Mô tả chi tiết (phía dưới). Tuyệt đối không sắp xếp ảnh trôi nổi (floating) lộn xộn cạnh văn bản gây mất cấu trúc.
 
-#### 7. Visual Product Gallery (Bộ sưu tập ảnh)
-*   **Cách xử lý:** Tải về và chọn lọc tất cả ảnh trong phần mô tả sản phẩm.
+#### 7. Visual Product Gallery (Bộ sưu tập ảnh / Góc nhìn chân thực)
+*   **Cách xử lý:** Tải về và chọn lọc tất cả ảnh trong phần mô tả sản phẩm. BẮT BUỘC phải kiểm tra nội dung ảnh xem có thực sự liên quan đến tiêu đề hiển thị hay không. Nếu không liên quan, phải dùng AI tạo ảnh mới thay thế.
 *   **Bước thực hiện:** 
     1. Lọc bỏ các ảnh trùng lặp về nội dung text hoặc chỉ khác màu vỏ.
     2. **PHÂN LOẠI BẮT BUỘC:** Phân loại ảnh thành 3 nhóm: (a) Ảnh sản phẩm thuần túy, (b) Ảnh giải thưởng/bằng sáng chế/chứng nhận, (c) Ảnh infographic. Ảnh nhóm (b) PHẢI được tách ra thành section riêng "Giải Thưởng & Chứng Nhận" để tối đa hóa tác dụng tạo lòng tin. KHÔNG trộn lẫn ảnh giải thưởng vào Gallery sản phẩm.
-    3. **Tạo ảnh Lifestyle bằng AI:** Nếu ảnh gốc chỉ có ảnh sản phẩm khô khan, BẮT BUỘC dùng `generate_image` để tạo ít nhất 2-3 ảnh sản phẩm trong bối cảnh thực tế đời thường (Lifestyle) để khách hàng dễ hình dung.
-    4. Sắp xếp theo trình tự mạch lạc để khách hàng có cái nhìn toàn diện. Ảnh phải được hiển thị đầy đủ và full trên màn hình desktop và mobile
+    3. **Tạo ảnh Lifestyle bằng AI:** BẮT BUỘC dùng `generate_image` để tạo ít nhất 2-3 ảnh sản phẩm trong bối cảnh thực tế đời thường (Lifestyle) nếu ảnh gốc khô khan. Đảm bảo ảnh sinh ra phải liên quan sát nhất với nội dung "Góc nhìn chân thực".
+    4. **Quy tắc hiển thị Mobile:** Để người dùng có cảm giác nhiều ảnh và nhìn rõ hơn, mỗi ảnh trên Mobile phải hiển thị tràn chiều ngang màn hình (`w-full`) và các ảnh được xếp lần lượt từ trên xuống dưới liền nhau.
 
 #### 8. Application & Guide (Hướng dẫn sử dụng)
 *   **Cách xử lý:** Chuyển đổi hướng dẫn thành quy trình trực quan.
@@ -283,8 +283,8 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Bước thực hiện:** Soạn thảo 4-5 cặp Câu hỏi - Câu trả lời ngắn gọn, tập trung vào việc xóa bỏ nỗi lo (VD: Có bị cay mắt không?).
 
 #### 14. Tiered Pricing (Bảng giá Combo)
-*   **Cách xử lý:** Xem giá gốc và các mã giảm giá hiện có trên Shopee.
-*   **Bước thực hiện:** Thiết kế 3 gói: Mua thử (1 hộp), Tiết kiệm (2 hộp), Chăm sóc toàn diện (3 hộp) với mức giảm giá tăng dần.
+*   **Cách xử lý:** Lấy thông tin các gói ưu đãi từ file `description`.
+*   **Bước thực hiện:** AI phải đọc và lấy linh hoạt số lượng lựa chọn mua hàng dựa trên nội dung mô tả (có thể là 1, 2, hoặc 3 gói). KHÔNG bắt buộc hiển thị cứng 3 gói nữa. Số lượng hiển thị phụ thuộc hoàn toàn vào file dữ liệu đầu vào.
 
 #### 15. Urgency Elements (Yếu tố gấp rút)
 *   **Cách xử lý:** Tự tạo dựa trên chiến dịch marketing.
@@ -295,14 +295,17 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Bước thực hiện:** 
     1. Thiết kế Popup chia 3 phần: Header (Fixed), Body (Scroll với `max-h-[80vh]`), Footer (Fixed nút Submit).
     2. Tích hợp bộ chọn địa chỉ 3 cấp (Tỉnh/Huyện/Xã) và hiển thị trực quan các gói Combo kèm giá tự động tính.
+    3. **Chọn số lượng:** BẮT BUỘC thêm ô chọn số lượng (Quantity Selector: - 1 +) cho mỗi option mua hàng. Giao diện phải được thiết kế cân đối, gọn gàng cho cả Mobile lẫn Web.
 
 #### 17. Trust Badges & Guarantees (Cam kết)
 *   **Cách xử lý:** Lấy các cam kết của Shop (Yêu thích/Mall) và chính sách trả hàng của sàn.
 *   **Bước thực hiện:** Biến chúng thành các huy hiệu uy tín (VD: 15 ngày trả hàng, Đền 111% nếu hàng giả).
+*   **Quy tắc hiển thị Mobile:** Mỗi thông tin cam kết/đổi trả phải được hiển thị đơn giản dạng Card riêng biệt, với chiều ngang vừa tràn giao diện (`w-full`), và xếp chồng từ trên xuống dưới.
 
 #### 18. Visual Logistics (Đóng gói & Vận chuyển)
 *   **Cách xử lý:** Tìm ảnh khách hàng chụp quá trình nhận hàng hoặc ảnh shop tự chụp kho hàng.
 *   **Bước thực hiện:** Trình bày hình ảnh hộp hàng có chống sốc và logo các đơn vị vận chuyển (GHTK, Viettel Post).
+*   **Quy tắc hiển thị Mobile:** Tương tự như mục 17, mỗi hình ảnh và thông tin giao hàng/vận chuyển sẽ hiển thị thành 1 Card chiếm trọn chiều ngang màn hình và xếp dọc từ trên xuống dưới.
 
 #### 19. Post-Purchase Experience (Trang cảm ơn)
 *   **Cách xử lý:** Tự xây dựng kịch bản chăm sóc khách hàng sau mua.
@@ -376,7 +379,7 @@ Tuyệt đối không gò bó giao diện. Ưu tiên thiết kế "phá vỡ khu
 *   **Navigation:** Trên Mobile (screen < 768px), bắt buộc sử dụng **Hamburger Menu** (Icon 3 gạch) bên phải và Logo bên trái. Tuyệt đối không để text menu tràn lan gây đè chữ.
 *   **Typography:** Tiêu đề H1/H2 trên mobile không được vượt quá `text-3xl` hoặc `text-4xl` để tránh tràn dòng/vỡ layout.
 *   **Padding/Gap:** Đảm bảo container trên mobile luôn có `px-4` hoặc `px-6`. Khoảng cách giữa các phần tử (Gap) tối thiểu là `gap-4`.
-*   **Sticky Order Bar:** Khi người dùng cuộn qua Hero Section, một thanh "Mua ngay" mỏng phải xuất hiện cố định ở dưới cùng màn hình (chứa ảnh nhỏ, tên sản phẩm, giá ưu đãi và nút Mua).
+*   **Sticky Order Bar (BẮT BUỘC TRÊN MOBILE):** Giao diện Mobile luôn luôn phải hiển thị cố định một nút "Nhận ưu đãi ngay" (hoặc thanh bar nhỏ) ở dưới cùng màn hình (`bottom-0`, `fixed` hoặc `sticky`) để người dùng có thể nhấn vào và đặt hàng bất cứ lúc nào.
 *   **Image Optimization:** Mọi hình ảnh phải được bao bọc trong các thẻ Container có tỉ lệ khung hình (Aspect Ratio) cố định để tránh tình trạng nhảy bố cục (Layout Shift).
 
 ---

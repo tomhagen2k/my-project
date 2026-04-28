@@ -38,11 +38,11 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
     *   *Công dụng:* Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ và cấp ẩm sâu.
 *   **QUY TẮC MINH HỌA:** Ảnh PHẢI liên quan trực tiếp đến thành phần. AI dùng `generate_image` để tạo ảnh bối cảnh (Lifestyle) cho thành phần kết hợp với sản phẩm thực tế để tạo sự tin cậy. Ảnh hiển thị lớn (`h-64` hoặc `h-72`).
 
-## 7. Visual Product Gallery (Hình ảnh thực tế & Lifestyle)
+## 7. Visual Product Gallery (Góc nhìn chân thực & Lifestyle)
 *   **Ảnh 1 (Lifestyle - AI Generated):** Hũ mặt nạ WIS đặt trên bàn trang điểm gỗ cao cấp, cạnh một bình hoa nhỏ và gương soi.
 *   **Ảnh 2 (Lifestyle - AI Generated):** Cô gái đang thư giãn trên sofa, đắp mặt nạ mắt WIS trong không gian phòng khách ấm cúng.
 *   **Ảnh 3 (Cận cảnh):** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh khi lấy bằng thìa.
-*   **Lưu ý:** AI PHẢI dùng `generate_image` để tạo ra các bối cảnh thực tế đời thường (Lifestyle) nếu dữ liệu gốc chỉ có ảnh sản phẩm nền trắng. Ảnh phải mang ý nghĩa "thực tế sử dụng".
+*   **Lưu ý:** Ảnh sinh ra PHẢI liên quan sát với nội dung muốn truyền tải. Trên thiết bị di động (Mobile), mỗi ảnh phải được hiển thị chiếm 100% chiều ngang màn hình và xếp lần lượt từ trên xuống dưới.
 
 ## 7b. Giải Thưởng & Chứng Nhận Uy Tín (Tách từ Gallery)
 *   **Nguồn:** Các ảnh nhóm (b) đã được tách ra từ bước phân loại Gallery.
@@ -88,6 +88,7 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Đáp:** Một hũ gồm 60 miếng (30 cặp), nếu dùng hàng ngày bạn có thể sử dụng liên tục trong 1 tháng.
 
 ## 14. Tiered Pricing
+*   *(Ghi chú: Lấy linh hoạt các tùy chọn gói dựa trên file description. Dưới đây là ví dụ có 3 gói, nhưng nếu data chỉ có 1 hoặc 2 gói thì chỉ hiển thị số lượng tương ứng)*
 *   **Gói 1: Mua thử.** 1 Hũ giá 140.800đ (Tiết kiệm 46%).
 *   **Gói 2: Liệu trình 2 tháng.** 2 Hũ giá 260.000đ (Tặng 1 mặt nạ môi).
 *   **Gói 3: Chăm sóc toàn diện.** 3 Hũ giá 360.000đ (Freeship + Tặng 2 mặt nạ môi).
@@ -102,16 +103,18 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
     *   **BẮT BUỘC:** Phải có nút đóng (Icon X) và cho phép đóng khi nhấn ra ngoài vùng Modal (Overlay click).
 *   **Header (Fixed top):** Tiêu đề "Hoàn Tất Đặt Hàng".
 *   **Body (overflow-y-auto):** 
-    * Fields: Họ tên | Số điện thoại | Combo lựa chọn | Địa chỉ (Dropdown: Tỉnh -> Huyện -> Xã)
+    * Fields: Họ tên | Số điện thoại | Combo lựa chọn | **Số lượng (Selector - 1 +)** | Địa chỉ (Dropdown: Tỉnh -> Huyện -> Xã)
 *   **Footer (Fixed bottom):** [XÁC NHẬN ĐẶT HÀNG - THANH TOÁN KHI NHẬN HÀNG].
 
 ## 17. Trust Badges & Guarantees
 *   [HOÀN TIỀN 111% NẾU PHÁT HIỆN HÀNG GIẢ]
 *   [15 NGÀY ĐỔI TRẢ MIỄN PHÍ]
 *   [KIỂM TRA HÀNG TRƯỚC KHI THANH TOÁN]
+*   **Lưu ý thiết kế Mobile:** Mỗi mục bên trên hiển thị thành 1 Card nhỏ chiếm full chiều ngang màn hình và xếp chồng lên nhau từ trên xuống.
 
 ## 18. Visual Logistics
 *   **Hình ảnh:** Ảnh chụp các hộp hàng WIS được quấn bong bóng chống sốc cẩn thận, dán tem niêm phong Official Store. Logo: GHTK, Shopee Express.
+*   **Lưu ý thiết kế Mobile:** Tương tự mục 17, hiển thị thành các Card tràn chiều ngang.
 
 ## 19. Post-Purchase Experience
 *   **Thông báo:** "Đặt hàng thành công! Đội ngũ WIS sẽ liên hệ với bạn trong vòng 15 phút để xác nhận đơn hàng. Cảm ơn bạn đã tin dùng sản phẩm của chúng tôi!"
