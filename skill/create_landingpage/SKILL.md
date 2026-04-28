@@ -58,27 +58,34 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 6. Technology & Ingredients (Công nghệ & Thành phần)
 *   **Mục đích:** Lý giải "Tại sao sản phẩm lại tốt như vậy?".
-*   **Cấu trúc cụ thể:**
-    *   Ảnh Macro cận cảnh các nguyên liệu quý.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   Phải liệt kê chi tiết các thành phần chính (Key Ingredients) được trích xuất từ dữ liệu.
+    *   Ảnh Macro cận cảnh các nguyên liệu quý hoặc ảnh minh họa sạch.
     *   Sơ đồ hóa công nghệ dưới dạng icon (VD: Hạt phấn Nano, Màng lọc UV).
-    *   Văn phong: Sử dụng các thuật ngữ chuyên môn nhưng dễ hiểu.
+    *   Văn phong: Sử dụng các thuật ngữ chuyên môn nhưng dễ hiểu, nhấn mạnh công dụng của từng thành phần.
+    *   **Bố cục:** Bắt buộc dùng Card Grid (Ảnh trên, Text dưới) để đảm bảo tính chuyên nghiệp.
+    *   **Tính liên quan của hình ảnh (CRITICAL):** Mỗi thành phần liệt kê PHẢI có hình ảnh minh họa liên quan mật thiết. Tuyệt đối không dùng ảnh sản phẩm chung chung.
+    *   **Sử dụng AI:** Nếu không có ảnh thành phần cụ thể, AI PHẢI dùng `generate_image` với prompt kết hợp giữa: [Ảnh sản phẩm thực tế làm tham chiếu] + [Mô tả về thành phần đó] (VD: "Chai kem chống nắng đặt cạnh những lá rau má xanh tươi", "Hạt tinh thể Niacinamide đang thẩm thấu vào bề mặt da").
+    *   **Chất lượng hiển thị:** Ảnh trong Card Ingredients phải lớn, rõ nét trên cả Desktop và Mobile. Sử dụng `h-64` hoặc `h-72` để tăng diện tích hiển thị ảnh. Phải đảm bảo rằng khi hiển thị trên Mobile thì ảnh cũng sẽ hiển thị full và không bị cắt bất cứ phần nào.
+    *   Bố cục: Card Grid chuẩn (Ảnh lớn ở trên, Text ở dưới).
 
-#### 7. Visual Product Gallery (Bộ sưu tập hình ảnh chi tiết)
-*   **Mục đích:** Cho khách hàng thấy rõ mọi góc cạnh sản phẩm.
-*   **Cấu trúc cụ thể:**
-    *   Slider hoặc Grid ảnh chất lượng cực cao.
-    *   Ảnh chụp các góc: Nắp, thân, đáy, chất kem bên trong, bao bì hộp giấy.
-*   **QUY TẮC PHÂN LOẠI ẢNH BẮT BUỘC (Gallery Classification):**
+#### 7. Visual Product Gallery (Bộ sưu tập hình ảnh thực tế)
+*   **Mục đích:** Cho khách hàng thấy rõ mọi góc cạnh và sự chân thực của sản phẩm trong cuộc sống.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   **Tính "Thực tế" (Authenticity):** Gallery không chỉ là ảnh studio. Nó phải bao gồm ảnh Lifestyle (sản phẩm trong bối cảnh sử dụng thật).
+    *   **Sử dụng AI tạo bối cảnh:** Nếu dữ liệu chỉ có ảnh sản phẩm nền trắng, AI PHẢI dùng `generate_image` để đặt sản phẩm vào bối cảnh thực tế (VD: Đặt trên bàn trang điểm sang trọng, trong túi xách thời trang, hoặc trên nền cát biển nắng vàng cho kem chống nắng).
+    *   **QUY TẮC PHÂN LOẠI ẢNH BẮT BUỘC (Gallery Classification):**
     *   AI PHẢI phân tích nội dung từng ảnh trong thư mục dữ liệu và phân loại thành các nhóm: (a) Ảnh sản phẩm thuần túy (chụp góc cạnh, bao bì, chất sản phẩm), (b) Ảnh Giải thưởng / Bằng sáng chế / Chứng nhận, (c) Ảnh Infographic / Thông số kỹ thuật.
     *   **Ảnh nhóm (b) - Giải thưởng & Bằng sáng chế:** TUYỆT ĐỐI KHÔNG đưa vào Gallery chung. Phải tách ra thành một section riêng biệt (đặt gần section "Trust Badges & Guarantees" hoặc sau "Expert Endorsement") với tiêu đề như "Giải Thưởng & Chứng Nhận Uy Tín" để tối đa hóa tác dụng tạo lòng tin. Ảnh giải thưởng/bằng sáng chế khi đứng riêng sẽ nổi bật và có tác dụng thuyết phục mạnh mẽ hơn rất nhiều so với khi bị trộn lẫn với ảnh sản phẩm.
     *   **Ảnh nhóm (c) - Infographic:** Có thể dùng trong Gallery nhưng phải sử dụng `object-contain` để hiển thị đầy đủ nội dung.
     *   **Ảnh nhóm (a):** Đây mới là ảnh chính cho Gallery. Sắp xếp theo trình tự mạch lạc (tổng quan → chi tiết → cận cảnh chất sản phẩm).
 
-#### 8. Application & Guide (Hướng dẫn sử dụng & Chọn mẫu)
-*   **Mục đích:** Giúp khách hàng hình dung việc sử dụng dễ dàng.
-*   **Cấu trúc cụ thể:**
-    *   Bước 1 - Bước 2 - Bước 3 kèm hình ảnh minh họa nhỏ.
-    *   Nếu là mỹ phẩm: Bảng swatches màu trên các tông da khác nhau.
+#### 8. Application & Guide (Hướng dẫn sử dụng & Các bước thực hiện)
+*   **Mục đích:** Giúp khách hàng hình dung việc sử dụng dễ dàng và đạt hiệu quả cao nhất.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   **Quy trình các bước (Steps):** Phải trình bày dưới dạng "Bước 1 - Bước 2 - Bước 3..." với icon hoặc hình ảnh minh họa nhỏ cho từng bước.
+    *   **Hướng dẫn chi tiết:** Cung cấp thông tin về liều lượng, tần suất và các lưu ý quan trọng khi dùng sản phẩm.
+    *   Nếu là mỹ phẩm: Bảng swatches màu hoặc ảnh minh họa kết cấu (texture) trên da.
 
 #### 9. Comparison Table (Bảng so sánh trực quan)
 *   **Mục đích:** Khẳng định vị thế độc tôn so với đối thủ.
@@ -101,9 +108,10 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 #### 11. Feedback Wall (Bức tường phản hồi Shopee Style)
 *   **Mục đích:** Tạo lòng tin bằng bằng chứng xã hội thực tế.
 *   **Yêu cầu dữ liệu đầy đủ:** Phải hiển thị toàn bộ nội dung được cung cấp trong thư mục data.
-*   **QUY TẮC BẮT BUỘC (MAPPING DATA):**
+*   **QUY TẮC BẮT BUỘC (MAPPING DATA & INTERACTION):**
     *   AI phải duyệt TOÀN BỘ file trong thư mục `review/image_review`.
     *   Đối với mỗi Review, AI PHẢI lấy TẤT CẢ các file có tiền tố tương ứng (Ví dụ: Nếu có `review1_image1`, `review1_image2`, `review1_image3`, `review1_video.mp4` thì PHẢI đưa toàn bộ 4 file này vào media array của review 1). Tuyệt đối không được bỏ sót bất kỳ tệp nào.
+    *   **Tính năng Media Viewer (BẮT BUỘC):** Cho phép người dùng nhấn vào bất kỳ ảnh hoặc video nào để xem ở dạng phóng lớn (Fullscreen Popup/Lightbox). Giao diện xem lớn phải có nút đóng (Icon X) và cho phép chuyển đổi giữa các ảnh/video trong cùng một review (nếu có).
     *   Bao gồm: Tên ẩn danh (Shopee style), Số sao, Ngày giờ, Phân loại, Mô tả text, và BỘ MEDIA THỰC TẾ đầy đủ.
 
 #### 12. Social Proof Counters (Con số ấn tượng)
@@ -241,16 +249,16 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 *   **Bước thực hiện:** 
     1. Lọc bỏ các ảnh trùng lặp về nội dung text hoặc chỉ khác màu vỏ.
     2. **PHÂN LOẠI BẮT BUỘC:** Phân loại ảnh thành 3 nhóm: (a) Ảnh sản phẩm thuần túy, (b) Ảnh giải thưởng/bằng sáng chế/chứng nhận, (c) Ảnh infographic. Ảnh nhóm (b) PHẢI được tách ra thành section riêng "Giải Thưởng & Chứng Nhận" để tối đa hóa tác dụng tạo lòng tin. KHÔNG trộn lẫn ảnh giải thưởng vào Gallery sản phẩm.
-    3. Nếu ảnh nghèo nàn, BẮT BUỘC dùng `generate_image` để tạo thêm 2-3 ảnh Lifestyle/Macro chất lượng cao (vd: swatch kem, đặt trên nền nước...).
-    4. Sắp xếp theo trình tự mạch lạc để khách hàng có cái nhìn toàn diện.
+    3. **Tạo ảnh Lifestyle bằng AI:** Nếu ảnh gốc chỉ có ảnh sản phẩm khô khan, BẮT BUỘC dùng `generate_image` để tạo ít nhất 2-3 ảnh sản phẩm trong bối cảnh thực tế đời thường (Lifestyle) để khách hàng dễ hình dung.
+    4. Sắp xếp theo trình tự mạch lạc để khách hàng có cái nhìn toàn diện. Ảnh phải được hiển thị đầy đủ và full trên màn hình desktop và mobile
 
 #### 8. Application & Guide (Hướng dẫn sử dụng)
-*   **Cách xử lý:** Lấy các bước hướng dẫn từ nhà sản xuất.
-*   **Bước thực hiện:** Chuyển đổi thành dạng Infographic (Bước 1, Bước 2, Bước 3) với icon minh họa dễ hiểu.
+*   **Cách xử lý:** Chuyển đổi hướng dẫn thành quy trình trực quan.
+*   **Bước thực hiện:** Chuyển đổi thành dạng "Bước 1 - 2 - 3" với icon và mô tả ngắn gọn.
 
 #### 9. Comparison Table (Bảng so sánh)
-*   **Cách xử lý:** Tự phân tích các sản phẩm cùng phân khúc giá rẻ trên thị trường.
-*   **Bước thực hiện:** Liệt kê các tiêu chí mà sản phẩm này vượt trội hơn (VD: Độ dày mặt nạ, lượng tinh chất, chứng nhận an toàn).
+*   **Cách xử lý:** BẮT BUỘC phải có bảng so sánh để làm nổi bật ưu thế.
+*   **Bước thực hiện:** Tạo bảng so sánh các tiêu chí: Thành phần, Công dụng, Giá cả, Trải nghiệm người dùng giữa "Sản phẩm của chúng tôi" và "Sản phẩm thông thường khác". Dùng dấu V xanh và X đỏ để trực quan hóa.
 
 #### 10. Expert Endorsement (Chứng thực chuyên gia)
 *   **Cách xử lý:** Tìm kiếm xem sản phẩm có được bác sĩ hay celeb nào khuyên dùng không.

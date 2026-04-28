@@ -29,46 +29,54 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Giải pháp:** WIS Crystal Smooth - Không chỉ là mặt nạ mắt, đó là "liều thuốc bổ" phục hồi sinh khí cho cửa sổ tâm hồn của bạn.
 *   **Lưu ý thiết kế:** Áp dụng bố cục **Split (chia đôi màn hình)**. Tuyệt đối KHÔNG đè HTML text lên ảnh có sẵn text/đồ họa phức tạp. Sử dụng ảnh gốc dạng `object-contain` một bên, bên còn lại là khối màu solid chứa văn bản.
 
-## 6. Technology & Ingredients (Bố cục Card Grid)
-*   **Thành phần 1: Chiết xuất rễ Hoàng Liên.** (Ảnh phía trên: `object-contain`). Giúp thắt chặt cơ da, giảm tình trạng chảy xệ vùng bọng mắt.
-*   **Thành phần 2: Rau má (Centella Asiatica).** (Ảnh phía trên: `object-contain`). Làm dịu tức thì, giảm kích ứng cho vùng da nhạy cảm nhất.
-*   **Thành phần 3: Cải bắp nhăn.** (Ảnh phía trên: `object-contain`). Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ.
-*   **QUY TẮC ẢNH AI TRONG CARD:** Khi dùng `generate_image` tạo ảnh minh họa cho Card, prompt PHẢI yêu cầu nội dung chính (chủ thể, text) nằm tập trung ở vùng trung tâm ảnh với safe margin xung quanh. Chỉ định tỷ lệ khung hình phù hợp với kích thước Card (VD: "landscape 16:9"). Nếu ảnh chứa text, BẮT BUỘC dùng `object-contain` thay vì `object-cover`.
+## 6. Technology & Ingredients (Bố cục Card Grid - Ảnh lớn h-64)
+*   **Thành phần 1: Chiết xuất rễ Hoàng Liên.** (Ảnh: Cận cảnh rễ cây Hoàng Liên tươi hoặc tinh chất rễ đang thẩm thấu).
+    *   *Công dụng:* Giúp thắt chặt cơ da, giảm tình trạng chảy xệ vùng bọng mắt. Chống oxy hóa mạnh mẽ.
+*   **Thành phần 2: Rau má (Centella Asiatica).** (Ảnh: Những lá rau má Madagascar xanh mướt đặt cạnh hũ sản phẩm mặt nạ mắt).
+    *   *Công dụng:* Làm dịu tức thì, phục hồi hàng rào bảo vệ da, giảm kích ứng cho vùng da nhạy cảm nhất.
+*   **Thành phần 3: Cải bắp nhăn.** (Ảnh: Hình ảnh nghệ thuật của lá cải bắp nhăn mọng nước kết hợp với bối cảnh phòng Lab hiện đại).
+    *   *Công dụng:* Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ và cấp ẩm sâu.
+*   **QUY TẮC MINH HỌA:** Ảnh PHẢI liên quan trực tiếp đến thành phần. AI dùng `generate_image` để tạo ảnh bối cảnh (Lifestyle) cho thành phần kết hợp với sản phẩm thực tế để tạo sự tin cậy. Ảnh hiển thị lớn (`h-64` hoặc `h-72`).
 
-## 7. Visual Product Gallery
-*   **Lưu ý bộ lọc:** Đã tự động kiểm tra và lọc bỏ các ảnh bị lặp lại thông điệp (chỉ khác màu vỏ).
-*   **PHÂN LOẠI BẮT BUỘC:** Đã phân loại ảnh thành 3 nhóm: (a) Ảnh sản phẩm thuần túy, (b) Ảnh giải thưởng/bằng sáng chế/chứng nhận, (c) Ảnh infographic. Ảnh nhóm (b) đã được tách riêng thành section "Giải Thưởng & Chứng Nhận Uy Tín" để tối đa hóa uy tín.
-*   **Ảnh 1 (Gallery):** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh (Sử dụng `object-cover` cho ảnh bối cảnh/lifestyle).
-*   **Ảnh 2 (Gallery):** Hũ sản phẩm có nắp đậy 2 lớp chắc chắn, tặng kèm thìa lấy mặt nạ vệ sinh.
-*   **Ảnh 3 (Gallery - AI Generated):** Ảnh Swatch chất gel trên tay người mẫu, được tạo thêm bằng tool `generate_image` để làm phong phú gallery do ảnh gốc nghèo nàn.
+## 7. Visual Product Gallery (Hình ảnh thực tế & Lifestyle)
+*   **Ảnh 1 (Lifestyle - AI Generated):** Hũ mặt nạ WIS đặt trên bàn trang điểm gỗ cao cấp, cạnh một bình hoa nhỏ và gương soi.
+*   **Ảnh 2 (Lifestyle - AI Generated):** Cô gái đang thư giãn trên sofa, đắp mặt nạ mắt WIS trong không gian phòng khách ấm cúng.
+*   **Ảnh 3 (Cận cảnh):** Cận cảnh chất gel pha lê trong suốt, lấp lánh ánh xanh khi lấy bằng thìa.
+*   **Lưu ý:** AI PHẢI dùng `generate_image` để tạo ra các bối cảnh thực tế đời thường (Lifestyle) nếu dữ liệu gốc chỉ có ảnh sản phẩm nền trắng. Ảnh phải mang ý nghĩa "thực tế sử dụng".
 
 ## 7b. Giải Thưởng & Chứng Nhận Uy Tín (Tách từ Gallery)
 *   **Nguồn:** Các ảnh nhóm (b) đã được tách ra từ bước phân loại Gallery.
 *   **Thiết kế:** Section riêng biệt với tiêu đề nổi bật, hiển thị các ảnh giải thưởng/bằng sáng chế/chứng nhận bằng `object-contain` để hiển thị đầy đủ.
 *   **Vị trí:** Đặt gần "Trust Badges & Guarantees" hoặc sau "Expert Endorsement" để củng cố lòng tin.
 
-## 8. Application & Guide
-*   **Bước 1:** Làm sạch mặt và thấm khô.
-*   **Bước 2:** Dùng thìa lấy 2 miếng mặt nạ và đắp lên vùng dưới mắt.
-*   **Bước 3:** Thư giãn 15-20 phút, sau đó gỡ ra và vỗ nhẹ để tinh chất thẩm thấu (Không cần rửa lại).
+## 8. Application & Guide (Các bước thực hiện)
+*   **Bước 1:** Làm sạch vùng da quanh mắt bằng sữa rửa mặt và thấm khô nhẹ nhàng.
+*   **Bước 2:** Dùng thìa lấy 2 miếng mặt nạ gel và đắp lên vùng dưới mắt (có thể dùng cho cả khóe miệng, trán).
+*   **Bước 3:** Thư giãn 15-20 phút, sau đó gỡ ra và vỗ nhẹ để tinh chất thẩm thấu (Không cần rửa lại với nước).
+*   **Hướng dẫn chi tiết:** 
+    *   Sử dụng đều đặn 2-3 lần/tuần để đạt hiệu quả giảm quầng thâm tốt nhất. 
+    *   Nên bảo quản sản phẩm trong ngăn mát tủ lạnh để tăng cảm giác sảng khoái khi đắp.
+    *   Tránh để tinh chất rơi trực tiếp vào mắt.
 
-## 9. Comparison Table
-| Tiêu chí | WIS Crystal Smooth | Mặt nạ giấy thông thường |
+## 9. Comparison Table (Bảng so sánh trực quan)
+| Tiêu chí | WIS Crystal Smooth | Mặt nạ giấy/mask khác |
 | :--- | :--- | :--- |
-| **Chất liệu** | Gel pha lê (Hydrogel) ôm sát | Giấy mỏng, dễ bay hơi |
-| **Cảm giác** | Mát lạnh sâu, giảm sưng | Bình thường, dễ bị khô |
-| **Đa năng** | Dùng cho mắt, trán, cổ, khóe miệng | Chỉ dùng cho mắt |
-| **Giá trị** | Hũ 60 miếng tiết kiệm | Gói lẻ đắt đỏ |
+| **Chất liệu** | Gel Hydrogel (Thấm thấu tốt hơn) | Giấy hoặc Cotton dễ bị khô |
+| **Công dụng** | Giảm sưng, giảm thâm, trẻ hóa | Chỉ cấp ẩm cơ bản |
+| **Trải nghiệm** | Mát lạnh tức thì (Cooling effect) | Không có cảm giác mát lạnh sâu |
+| **Độ bám dính** | Ôm sát, không rơi khi di chuyển | Dễ bị tuột, khó vận động |
+| **Giá trị** | Combo 60 miếng cực tiết kiệm | Mua lẻ từng miếng giá cao |
 
 ## 10. Expert Endorsement (Sử dụng ảnh AI chuyên nghiệp)
 *   **Ảnh chuyên gia (AI Generated):** Chân dung một chuyên gia trang điểm nổi tiếng, mặc vest lịch lãm, tay cầm hũ mặt nạ WIS giới thiệu trước ống kính.
 *   **BẮT BUỘC - SẢN PHẨM PHẢI GIỐNG THỰC TẾ:** Khi gọi `generate_image`, đã truyền ảnh sản phẩm gốc vào `ImagePaths` để làm tham chiếu. Prompt mô tả chi tiết bao bì sản phẩm (hình dạng hũ, màu xanh sapphire, logo WIS) để đảm bảo sản phẩm trong tay chuyên gia trùng khớp với sản phẩm thực tế.
 *   **Quote:** "Chúng tôi tin rằng việc chăm sóc vùng da mắt nên là một trải nghiệm thư giãn như tại Spa. WIS mang công nghệ Hydrogel tối tân nhất vào hũ mặt nạ Crystal Smooth để ai cũng có thể trẻ hóa đôi mắt tại nhà." - *Đội ngũ chuyên gia Da liễu WIS.*
 
-## 11. Feedback Wall (Map chính xác Media)
+## 11. Feedback Wall (Map chính xác Media & Lightbox)
 *   **Khách hàng `c*****t`:** "Mua vì thấy quảng cáo TikTok, dùng thử thấy mát lạnh rất thích, bọng mắt có vẻ bớt sưng sau khi ngủ dậy." (Media Map: `review1_video.mp4`, `review1_image1.webp`).
 *   **Khách hàng `0*****c`:** "Chất gel mềm mịn, đắp lên rất phê. Giao hàng nhanh, shop đóng gói kỹ." (Media Map: `review2_image1.webp`).
 *   **Khách hàng `t*****u`:** "Đã dùng 1 tuần, thấy mắt đỡ mỏi hơn hẳn, quầng thâm cũng nhạt bớt. Đáng đồng tiền bát gạo." (Media Map: `review3_video.mp4`, `review3_image1.webp`, `review3_image2.webp`).
+*   **Yêu cầu tương tác:** Toàn bộ ảnh/video trên Feedback Wall PHẢI tích hợp tính năng Lightbox. Khi nhấn vào sẽ mở popup phóng lớn toàn màn hình, có nút [X] để đóng.
 
 ## 12. Social Proof Counters
 *   **Số liệu:** "Hơn 8.800+ đánh giá 5 sao từ người dùng Shopee - Đã bán 15.000+ hũ trên toàn khu vực."

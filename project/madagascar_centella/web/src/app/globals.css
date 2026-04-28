@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-light: #f9f6f0;
+  --color-brand-cream: #fdfbf7;
+  --color-brand-green: #a3b18a;
+  --color-brand-green-dark: #588157;
+  --color-brand-brown: #bc8a5f;
+  --color-brand-dark: #3a3a3a;
+  --color-brand-orange: #e07a5f;
+
+  --color-background: var(--color-brand-cream);
+  --color-foreground: var(--color-brand-dark);
+
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #fdfbf7;
+    --foreground: #3a3a3a;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-xl bg-white/40 border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+}
