@@ -5,8 +5,11 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 ---
 
 ## 1. Sticky Header
-*   **Menu:** [THÔNG TIN] | [PHẢN HỒI] | [KHUYẾN MÃI]
-*   **Action:** Nút "MUA NGAY" màu cam nổi bật ở góc phải.
+*   **Cấu trúc:** 
+    *   **Trái:** Logo thương hiệu (VD: WIS Professional).
+    *   **Giữa (Desktop):** [THÔNG TIN] | [PHẢN HỒI] | [KHUYẾN MÃI].
+    *   **Phải (Mobile):** Hamburger Menu (Icon 3 gạch) mở ra drawer.
+*   **Action:** Nút "MUA NGAY" phong cách Glassmorphism cạnh Hamburger Menu hoặc Logo. **Yêu cầu:** Tích hợp hiệu ứng **Pulse/Glow** tỏa sáng mượt mà để tạo sự chú ý.
 
 ## 2. Hero Section
 *   **Tên sản phẩm (BẮT BUỘC hiển thị):** Mặt Nạ Mắt WIS Crystal Smooth Eye Patch *(lấy nguyên văn từ file description, hiển thị dưới dạng badge/tag phía trên Headline)*
@@ -29,7 +32,7 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Giải pháp:** [Tên sản phẩm] - Giải pháp giải quyết triệt để vấn đề trên.
 *   **Hình ảnh (BẮT BUỘC):** Ảnh Split-screen (Trước và Sau). 
     *   *Quy tắc:* AI phải rà soát ảnh so sánh trong dữ liệu. Nếu không có, BẮT BUỘC dùng `generate_image` để tạo ảnh so sánh hiệu quả rõ rệt (Ví dụ: da sạm vs da sáng).
-*   **Lưu ý thiết kế:** Áp dụng bố cục **Split (chia đôi màn hình)**. Tuyệt đối KHÔNG đè HTML text lên ảnh có sẵn text/đồ họa phức tạp. Sử dụng ảnh gốc dạng `object-contain` một bên, bên còn lại là khối màu solid chứa văn bản.
+*   **Lưu ý thiết kế:** Áp dụng bố cục **Split (chia đôi màn hình)** cho ảnh Before/After. **QUY TẮC BẮT BUỘC:** Tuyệt đối KHÔNG sử dụng khối màu đặc che mất gương mặt/kết quả ở phần "Sau". Nội dung văn bản phải nằm trên lớp phủ Gradient mờ hoặc nằm ở Card riêng bên dưới ảnh trên Mobile để đảm bảo tính trực quan.
 
 ## 6. Technology & Ingredients (Bố cục Card Grid - Ảnh lớn h-64)
 *   **Thành phần 1: Chiết xuất rễ Hoàng Liên.** (Ảnh: Cận cảnh rễ cây Hoàng Liên tươi hoặc tinh chất rễ đang thẩm thấu).
@@ -108,20 +111,16 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
     * Fields: Họ tên | Số điện thoại | Combo lựa chọn | **Số lượng (Selector - 1 +)** | Địa chỉ (Dropdown: Tỉnh -> Huyện -> Xã)
 *   **Footer (Fixed bottom):** [XÁC NHẬN ĐẶT HÀNG - THANH TOÁN KHI NHẬN HÀNG].
 
-## 17. Trust Badges & Guarantees
-*   [HOÀN TIỀN 111% NẾU PHÁT HIỆN HÀNG GIẢ]
-*   [15 NGÀY ĐỔI TRẢ MIỄN PHÍ]
-*   [KIỂM TRA HÀNG TRƯỚC KHI THANH TOÁN]
-*   **Lưu ý thiết kế Mobile:** Mỗi mục bên trên hiển thị thành 1 Card nhỏ chiếm full chiều ngang màn hình và xếp chồng lên nhau từ trên xuống.
+## 17. Trust & Guarantees (Thiết kế 3 Card dọc)
+*   **Card 1:** CAM KẾT CHÍNH HÃNG - Hoàn tiền 111% nếu phát hiện hàng giả, hàng nhái.
+*   **Card 2:** ĐỔI TRẢ TRONG 7 NGÀY - Hỗ trợ đổi trả miễn phí theo đúng quy định của Shopee.
+*   **Card 3:** KIỂM TRA HÀNG - Được kiểm tra hàng trước khi thanh toán nhận hàng.
+*   **Lưu ý thiết kế:** Icon bên trái, Tiêu đề/Mô tả bên phải. Xếp chồng theo chiều dọc trên cả Desktop và Mobile.
 
-## 18. Visual Logistics
-*   **Hình ảnh:** Ảnh chụp các hộp hàng WIS được quấn bong bóng chống sốc cẩn thận, dán tem niêm phong Official Store. Logo: GHTK, Shopee Express.
-*   **Lưu ý thiết kế Mobile:** Tương tự mục 17, hiển thị thành các Card tràn chiều ngang.
-
-## 19. Post-Purchase Experience
+## 18. Post-Purchase Experience
 *   **Thông báo:** "Đặt hàng thành công! Đội ngũ WIS sẽ liên hệ với bạn trong vòng 15 phút để xác nhận đơn hàng. Cảm ơn bạn đã tin dùng sản phẩm của chúng tôi!"
 
-## 20. Footer (Chân trang & Bản quyền)
+## 19. Footer (Chân trang & Bản quyền)
 *   **Logo & Thương hiệu:** +WIS+ Professional — *"Khoa học chăm sóc da, trao gửi vẻ đẹp thật"*
 *   **Tên công ty:** Công Ty TNHH Phân Phối Mỹ Phẩm WIS Việt Nam *(placeholder — chủ shop cập nhật)*
 *   **Địa chỉ:** 123 Đường Láng, Quận Đống Đa, Hà Nội *(placeholder)*

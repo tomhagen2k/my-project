@@ -21,11 +21,14 @@ Khi nhận được đầu vào là một **Đường dẫn Thư mục (Folder P
 Hệ thống truy cập thư mục được cung cấp, đọc tất cả các tệp văn bản và xem xét các tệp hình ảnh/video để phân bổ vào 19 hạng mục nội dung tiêu chuẩn:
 
 #### 1. Sticky Header (Thanh điều hướng cố định)
-*   **Mục đích:** Giúp khách hàng truy cập nhanh các phần quan trọng mà không cần cuộn ngược lên.
-*   **Cấu trúc cụ thể:**
-    *   3 Tab chính: **THÔNG TIN - PHẢN HỒI - KHUYẾN MÃI**.
-    *   Hiệu ứng: Chữ đổi màu hoặc có gạch chân khi cuộn đến phần tương ứng.
-    *   Nút "MUA NGAY" nhỏ ở góc phải (chỉ hiện khi cuộn qua Hero Section).
+*   **Mục đích:** Giúp khách hàng truy cập nhanh các phần quan trọng và tạo nhận diện thương hiệu.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   **Desktop:** [Logo (Trái)] - [Menu Text: THÔNG TIN, PHẢN HỒI, KHUYẾN MÃI (Giữa)] - [Nút MUA NGAY (Phải)].
+    *   **Mobile (BẮT BUỘC):** [Logo (Trái)] - [Nút MUA NGAY (Cạnh Hamburger)] - [Hamburger Menu Icon (Phải)].
+    *   **Hamburger Menu:** Khi bấm vào phải mở ra Drawer/Overlay chứa các link điều hướng lớn, dễ bấm.
+    *   **Hiệu ứng:** 
+        *   Nền Header dùng Glassmorphism, chữ đổi màu khi cuộn.
+        *   **Nút MUA NGAY (BẮT BUỘC):** Phải có hiệu ứng thu hút thị giác (VD: Rung nhẹ - wiggle định kỳ, hoặc hiệu ứng tỏa sáng - pulse/glow mượt mà) để thôi thúc khách hàng hành động.
 
 #### 2. Hero Section (Phần mở đầu bùng nổ)
 *   **Mục đích:** Giữ chân khách hàng trong 3 giây đầu tiên.
@@ -57,6 +60,11 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
         1. **Kiểm tra dữ liệu gốc:** AI phải rà soát toàn bộ thư mục `image` để tìm ảnh có nội dung so sánh thực tế giữa tình trạng trước và sau khi dùng sản phẩm.
         2. **Tự động tạo ảnh bằng AI:** Nếu dữ liệu đầu vào KHÔNG có ảnh so sánh rõ rệt, AI BẮT BUỘC sử dụng công cụ `generate_image` để tạo một bức ảnh split-screen. 
         3. **Yêu cầu thị giác:** Ảnh phải chia đôi rõ rệt. Bên trái (Before) thể hiện tình trạng vấn đề (VD: da đen sạm, quần áo bẩn, thiết bị cũ). Bên phải (After) thể hiện sự thay đổi ngoạn mục (VD: da trắng rạng rỡ, sạch bóng, như mới) sau khi sử dụng sản phẩm.
+    *   **QUY TẮC HIỂN THỊ HÌNH ẢNH (BẮT BUỘC):**
+        *   **Tính toàn vẹn của kết quả:** Tuyệt đối KHÔNG được sử dụng khối màu đặc (solid color block) che khuất hoàn toàn ảnh "Sau". Ảnh "Sau" phải hiển thị rõ rệt gương mặt/vấn đề đã được giải quyết.
+        *   **Xử lý Text Overlay:** Nếu đè chữ lên ảnh "Sau", bắt buộc sử dụng lớp phủ Gradient mờ (Transparent Gradient) để chữ dễ đọc nhưng KHÔNG được làm mờ chủ thể kết quả.
+        *   **Đồng nhất chủ thể:** Ảnh Before và After phải có cùng tỷ lệ zoom và vị trí chủ thể.
+    *   **Bố cục Mobile:** Trên Mobile, ưu tiên xếp chồng: Ảnh Before/After (chia đôi) ở trên, Khối nội dung giải thích ở dưới. Tuyệt đối không để nội dung đè lên ảnh.
     *   **Văn phong:** Sử dụng câu hỏi xoáy vào nỗi đau và câu khẳng định về giải pháp đột phá.
 
 #### 6. Technology & Ingredients (Công nghệ & Thành phần)
@@ -158,26 +166,23 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   Phân chia Modal thành 3 phần rõ ràng: Header (Tiêu đề, cố định), Body (Form nội dung, `overflow-y-auto`), Footer (Nút Submit, cố định).
     *   Trình chọn sản phẩm, Trường thông tin (Họ tên, SĐT, Địa chỉ), Dropdown 3 cấp (Tỉnh -> Huyện -> Xã).
 
-#### 17. Trust Badges & Guarantees (Cam kết & Bảo hành)
-*   **Mục đích:** Giảm rủi ro cho khách hàng.
-*   **Cấu trúc cụ thể:**
-    *   Dãy icon cam kết: Đổi trả 7 ngày, Kiểm hàng trước khi trả tiền, Bảo hành 12 tháng.
-    *   Hình ảnh Thẻ Bảo Hành của thương hiệu.
-
-#### 18. Visual Logistics (Vận hành, Kho bãi & Giao hàng)
-*   **Mục đích:** Chứng minh sự chuyên nghiệp, uy tín và quy mô của shop để khách hàng yên tâm đặt hàng.
+#### 17. Trust & Guarantees (Cam kết & Tin cậy)
+*   **Mục đích:** Xây dựng lòng tin tuyệt đối và loại bỏ rào cản mua hàng cuối cùng.
 *   **Cấu trúc cụ thể (BẮT BUỘC):**
-    *   Đây là nơi hiển thị các thông tin về: Kho hàng nội địa, quy trình đóng gói, cam kết thời gian giao hàng.
-    *   **Trình bày:** Sử dụng các Card ngắn gọn, súc tích. Tuyệt đối KHÔNG trình bày dưới dạng văn bản dài (Wall of text).
+    *   Chỉ hiển thị đúng **3 thẻ cam kết** súc tích (Tuyệt đối không làm rườm rà thêm phần vận chuyển, kho bãi).
+    *   **Thẻ 1:** CAM KẾT CHÍNH HÃNG - Hoàn tiền 111% nếu phát hiện hàng giả, hàng nhái.
+    *   **Thẻ 2:** ĐỔI TRẢ TRONG 7 NGÀY - Hỗ trợ đổi trả miễn phí theo đúng quy định của Shopee.
+    *   **Thẻ 3:** KIỂM TRA HÀNG - Được kiểm tra hàng trước khi thanh toán nhận hàng.
+    *   **Thiết kế (BẮT BUỘC):** Hiển thị dạng thẻ dọc (Icon bên trái trong khối hình học mềm mại, Tiêu đề và Mô tả bên phải). Nền thẻ trắng sạch sẽ, bo góc lớn.
 
-#### 19. Post-Purchase Experience (Trang cảm ơn & Xác nhận)
+#### 18. Post-Purchase Experience (Trang cảm ơn & Xác nhận)
 *   **Mục đích:** Chuyên nghiệp hóa quy trình và giảm tỷ lệ đơn ảo.
 *   **Cấu trúc cụ thể:**
     *   Một trang riêng hiện ra sau khi đặt hàng thành công.
     *   Nội dung: "Cảm ơn bạn đã đặt hàng!", "Mã đơn hàng: #12345", "Chúng tôi sẽ gọi điện xác nhận trong vòng 15 phút tới. Hãy chú ý điện thoại nhé!".
     *   Có thể thêm một video ngắn cảm ơn từ chủ shop hoặc hướng dẫn sử dụng nhanh.
 
-#### 20. Footer (Chân trang Công ty & Bản quyền)
+#### 19. Footer (Chân trang Công ty & Bản quyền)
 *   **Mục đích:** Tăng độ uy tín pháp lý, cung cấp thông tin liên hệ, hoàn thiện trải nghiệm trang web chuyên nghiệp.
 *   **Cấu trúc cụ thể (BẮT BUỘC):**
     *   **Logo & Tên thương hiệu:** Hiển thị logo và slogan ngắn của thương hiệu.
@@ -310,19 +315,18 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     2. Tích hợp bộ chọn địa chỉ 3 cấp (Tỉnh/Huyện/Xã) và hiển thị trực quan các gói Combo kèm giá tự động tính.
     3. **Chọn số lượng:** BẮT BUỘC thêm ô chọn số lượng (Quantity Selector: - 1 +) cho mỗi option mua hàng. Giao diện phải được thiết kế cân đối, gọn gàng cho cả Mobile lẫn Web.
 
-#### 17. Trust Badges & Guarantees (Cam kết)
-*   **Cách xử lý:** Lấy các cam kết của Shop (Yêu thích/Mall) và chính sách trả hàng của sàn.
-*   **Bước thực hiện:** Biến chúng thành các huy hiệu uy tín (VD: 15 ngày trả hàng, Đền 111% nếu hàng giả).
-*   **Quy tắc hiển thị Mobile:** Mỗi thông tin cam kết/đổi trả phải được hiển thị đơn giản dạng Card riêng biệt, với chiều ngang vừa tràn giao diện (`w-full`), và xếp chồng từ trên xuống dưới.
+#### 17. Trust Badges & Guarantees (Cam kết & Tin cậy)
+*   **Cách xử lý:** BẮT BUỘC hiển thị 3 cam kết chuẩn: Chính hãng, Đổi trả, Kiểm hàng.
+*   **Bước thực hiện:** Thiết kế dưới dạng danh sách dọc các Card trắng bo góc. Mỗi card bao gồm Icon bên trái và nội dung text bên phải. Tuyệt đối KHÔNG thêm các thông tin logistics rườm rà.
 
-#### 18. Visual Logistics (Đóng gói & Vận chuyển)
-*   **Cách xử lý:** Tìm ảnh khách hàng chụp quá trình nhận hàng hoặc ảnh shop tự chụp kho hàng.
-*   **Bước thực hiện:** Trình bày hình ảnh hộp hàng có chống sốc và logo các đơn vị vận chuyển (GHTK, Viettel Post).
-*   **Quy tắc hiển thị Mobile:** Tương tự như mục 17, mỗi hình ảnh và thông tin giao hàng/vận chuyển sẽ hiển thị thành 1 Card chiếm trọn chiều ngang màn hình và xếp dọc từ trên xuống dưới.
 
-#### 19. Post-Purchase Experience (Trang cảm ơn)
+#### 18. Post-Purchase Experience (Trang cảm ơn)
 *   **Cách xử lý:** Tự xây dựng kịch bản chăm sóc khách hàng sau mua.
 *   **Bước thực hiện:** Thiết kế giao diện thông báo đặt hàng thành công kèm lời nhắc nhân viên sẽ gọi điện xác nhận trong 15 phút.
+
+#### 19. Footer (Chân trang)
+*   **Cách xử lý:** Tổng hợp thông tin thương hiệu và liên hệ.
+*   **Bước thực hiện:** Hiển thị Logo, địa chỉ, hotline và các liên kết nhanh để hoàn thiện trang Landing Page chuyên nghiệp.
 
 ---
 
@@ -448,14 +452,14 @@ Hệ thống phải so sánh kết quả đầu ra với tệp mẫu chuẩn:
     *   Bộ lọc thông minh: AI phải kiểm tra nội dung ảnh. Nếu phát hiện các ảnh trùng lặp thông điệp (chỉ khác màu vỏ), chỉ chọn 1 ảnh đại diện.
     *   Bắt buộc chủ động dùng `generate_image` để tạo thêm các góc chụp mới (VD: Swatch ra tay, chất kem zoom cận cảnh, bối cảnh sang trọng) để làm phong phú Gallery nếu ảnh gốc nghèo nàn.
 
-### 5. Vỡ giao diện Popup Đặt Hàng (Order Modal)
-*   **Nguyên nhân:** Code Modal thiếu giới hạn chiều cao và xử lý overflow khi danh sách Combo dài ra.
+### 5. Vỡ giao diện Popup Đặt Hàng (Order Modal) & Lỗi Navigation Mobile
+*   **Nguyên nhân:** Code Modal thiếu giới hạn chiều cao hoặc Header Mobile để text menu tràn lan gây đè chữ/xấu giao diện.
 *   **QUY TẮC BẮT BUỘC:** 
-    *   Sử dụng cấu trúc Modal chuẩn: Bắt buộc dùng `max-h-[90vh]`.
-    *   Chia Modal thành 3 phần rõ rệt: Header (fixed), Body (overflow-y-auto), và Footer (chứa nút Submit fixed).
+    *   **Order Modal:** Bắt buộc dùng `max-h-[90vh]`, chia 3 phần Header, Body, Footer rõ rệt.
+    *   **Navigation Mobile:** TUYỆT ĐỐI KHÔNG để menu dạng text dàn hàng ngang trên mobile. Bắt buộc dùng Hamburger Menu (icon 3 gạch) và Logo thương hiệu. Việc vi phạm điều này sẽ bị coi là lỗi thẩm mỹ nghiêm trọng.
 ### 6. Lỗi thiếu hạng mục nội dung (Missing Mandatory Sections)
-*   **Nguyên nhân:** AI bỏ qua các mục như "Expert Endorsement", "Visual Logistics" vì cho rằng không có đủ dữ liệu.
-*   **QUY TẮC BẮT BUỘC:** Landing Page phải có ĐỦ 19 MỤC. Nếu thiếu dữ liệu thực tế, AI phải tự biên soạn nội dung dựa trên tiêu chuẩn chung của ngành (VD: Cam kết chất lượng, Quy trình đóng gói tiêu chuẩn) và dùng ảnh AI để minh họa. Tuyệt đối không được bỏ trống hoặc lược bỏ section.
+*   **Nguyên nhân:** AI bỏ qua các mục như "Expert Endorsement" vì cho rằng không có đủ dữ liệu.
+*   **QUY TẮC BẮT BUỘC:** Landing Page phải có ĐỦ 19 MỤC. Nếu thiếu dữ liệu thực tế, AI phải tự biên soạn nội dung dựa trên tiêu chuẩn chung của ngành (VD: Cam kết chất lượng, Phản hồi khách hàng) và dùng ảnh AI để minh họa. Tuyệt đối không được bỏ trống hoặc lược bỏ section.
 
 ### 7. Lỗi hiển thị ảnh (Image Distortion)
 *   **Nguyên nhân:** Lạm dụng class `aspect-square` và `object-cover` khiến các ảnh có chứa thông tin ở viền bị cắt xén (crop).
