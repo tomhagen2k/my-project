@@ -49,12 +49,15 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   Nội dung: Test chống nước, test độ che phủ trên da thật, hoặc test độ bền khi va chạm.
     *   Phải có text đè lên video để giải thích hành động (VD: "Thách thức mọi cơn mưa").
 
-#### 5. Pain Point & Solution (Nỗi đau và Giải pháp)
-*   **Mục đích:** Đánh vào tâm lý lo lắng và đưa ra "phao cứu sinh".
-*   **Cấu trúc cụ thể:**
-    *   Sử dụng ảnh chia đôi màn hình (Split screen).
-    *   Bên trái: Vấn đề (VD: Da sạm, mụn, nếp nhăn) với tông màu tối.
-    *   Bên phải: Kết quả sau khi dùng sản phẩm với tông màu sáng, rạng rỡ.
+#### 5. Pain Point & Solution (Chứng minh hiệu quả Before & After)
+*   **Mục đích:** Đánh vào tâm lý lo lắng và ngay lập tức đưa ra bằng chứng thuyết phục về hiệu quả sản phẩm.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   **Bố cục So sánh (Comparison Layout):** Đối với các ngành hàng có kết quả nhìn thấy được (Mỹ phẩm, làm đẹp, vệ sinh nhà cửa, sửa chữa...), Section này PHẢI được trình bày dưới dạng **Before & After (Trước và Sau)**.
+    *   **QUY TRÌNH THỰC THI BẮT BUỘC (MANDATORY STEPS):**
+        1. **Kiểm tra dữ liệu gốc:** AI phải rà soát toàn bộ thư mục `image` để tìm ảnh có nội dung so sánh thực tế giữa tình trạng trước và sau khi dùng sản phẩm.
+        2. **Tự động tạo ảnh bằng AI:** Nếu dữ liệu đầu vào KHÔNG có ảnh so sánh rõ rệt, AI BẮT BUỘC sử dụng công cụ `generate_image` để tạo một bức ảnh split-screen. 
+        3. **Yêu cầu thị giác:** Ảnh phải chia đôi rõ rệt. Bên trái (Before) thể hiện tình trạng vấn đề (VD: da đen sạm, quần áo bẩn, thiết bị cũ). Bên phải (After) thể hiện sự thay đổi ngoạn mục (VD: da trắng rạng rỡ, sạch bóng, như mới) sau khi sử dụng sản phẩm.
+    *   **Văn phong:** Sử dụng câu hỏi xoáy vào nỗi đau và câu khẳng định về giải pháp đột phá.
 
 #### 6. Technology & Ingredients (Công nghệ & Thành phần)
 *   **Mục đích:** Lý giải "Tại sao sản phẩm lại tốt như vậy?".
@@ -64,16 +67,18 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   Sơ đồ hóa công nghệ dưới dạng icon (VD: Hạt phấn Nano, Màng lọc UV).
     *   Văn phong: Sử dụng các thuật ngữ chuyên môn nhưng dễ hiểu, nhấn mạnh công dụng của từng thành phần.
     *   **Bố cục:** Bắt buộc dùng Card Grid (Ảnh trên, Text dưới) để đảm bảo tính chuyên nghiệp.
-    *   **Tính liên quan của hình ảnh (CRITICAL):** Mỗi thành phần liệt kê PHẢI có hình ảnh minh họa liên quan mật thiết. Tuyệt đối không dùng ảnh sản phẩm chung chung.
-    *   **Sử dụng AI:** Nếu không có ảnh thành phần cụ thể, AI PHẢI dùng `generate_image` với prompt kết hợp giữa: [Ảnh sản phẩm thực tế làm tham chiếu] + [Mô tả về thành phần đó] (VD: "Chai kem chống nắng đặt cạnh những lá rau má xanh tươi", "Hạt tinh thể Niacinamide đang thẩm thấu vào bề mặt da").
+    *   **Tính liên quan của hình ảnh (CRITICAL):** Mỗi thành phần liệt kê PHẢI có hình ảnh minh họa liên quan mật thiết. TUYỆT ĐỐI KHÔNG dùng ảnh sản phẩm chung chung cho các thẻ thành phần.
+    *   **Sử dụng AI:** Nếu không có ảnh thành phần cụ thể, AI PHẢI dùng `generate_image` để tạo ảnh bối cảnh theo công thức: **[Ảnh sản phẩm thực tế làm tham chiếu] + [Mô tả về nguyên liệu tươi/nguồn gốc thành phần]**. 
+    *   *Ví dụ:* Nếu thành phần là Vitamin C, ảnh phải là quả cam tươi đặt cạnh sản phẩm. Nếu là HA, ảnh phải là các giọt nước tinh thể đặt cạnh sản phẩm.
     *   **Chất lượng hiển thị:** Ảnh trong Card Ingredients phải lớn, rõ nét trên cả Desktop và Mobile. Sử dụng `h-64` hoặc `h-72` để tăng diện tích hiển thị ảnh. Phải đảm bảo rằng khi hiển thị trên Mobile thì ảnh cũng sẽ hiển thị full và không bị cắt bất cứ phần nào.
     *   Bố cục: Card Grid chuẩn (Ảnh lớn ở trên, Text ở dưới).
 
-#### 7. Visual Product Gallery (Bộ sưu tập hình ảnh thực tế)
+#### 7. Visual Product Gallery (Bộ sưu tập hình ảnh thực tế / Lifestyle)
 *   **Mục đích:** Cho khách hàng thấy rõ mọi góc cạnh và sự chân thực của sản phẩm trong cuộc sống.
 *   **Cấu trúc cụ thể (BẮT BUỘC):**
-    *   **Tính "Thực tế" (Authenticity):** Gallery không chỉ là ảnh studio. Nó phải bao gồm ảnh Lifestyle (sản phẩm trong bối cảnh sử dụng thật).
-    *   **Sử dụng AI tạo bối cảnh:** Nếu dữ liệu chỉ có ảnh sản phẩm nền trắng, AI PHẢI dùng `generate_image` để đặt sản phẩm vào bối cảnh thực tế (VD: Đặt trên bàn trang điểm sang trọng, trong túi xách thời trang, hoặc trên nền cát biển nắng vàng cho kem chống nắng).
+    *   **Tính "Thực tế" (Authenticity):** Gallery PHẢI là ảnh Lifestyle (sản phẩm trong bối cảnh sử dụng thật). TUYỆT ĐỐI KHÔNG đưa các thông tin khô khan như chính sách vận chuyển, kho bãi hay infographic kỹ thuật vào section này.
+    *   **Sử dụng AI tạo bối cảnh:** Nếu dữ liệu chỉ có ảnh sản phẩm nền trắng, AI PHẢI dùng `generate_image` để đặt sản phẩm vào bối cảnh thực tế đời thường (Lifestyle).
+    *   *Ví dụ:* Với mỹ phẩm, đặt trên bàn trang điểm sang trọng. Với đồ gia dụng, đặt trong không gian bếp ấm cúng.
     *   **QUY TẮC PHÂN LOẠI ẢNH BẮT BUỘC (Gallery Classification):**
     *   AI PHẢI phân tích nội dung từng ảnh trong thư mục dữ liệu và phân loại thành các nhóm: (a) Ảnh sản phẩm thuần túy (chụp góc cạnh, bao bì, chất sản phẩm), (b) Ảnh Giải thưởng / Bằng sáng chế / Chứng nhận, (c) Ảnh Infographic / Thông số kỹ thuật.
     *   **Ảnh nhóm (b) - Giải thưởng & Bằng sáng chế:** TUYỆT ĐỐI KHÔNG đưa vào Gallery chung. Phải tách ra thành một section riêng biệt (đặt gần section "Trust Badges & Guarantees" hoặc sau "Expert Endorsement") với tiêu đề như "Giải Thưởng & Chứng Nhận Uy Tín" để tối đa hóa tác dụng tạo lòng tin. Ảnh giải thưởng/bằng sáng chế khi đứng riêng sẽ nổi bật và có tác dụng thuyết phục mạnh mẽ hơn rất nhiều so với khi bị trộn lẫn với ảnh sản phẩm.
@@ -89,7 +94,7 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 9. Comparison Table (Bảng so sánh trực quan)
 *   **Mục đích:** Khẳng định vị thế độc tôn so với đối thủ.
-*   **Cấu trúc cụ thể:**
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
     *   Bảng 2 cột: **SẢN PHẨM CỦA CHÚNG TÔI** vs **SẢN PHẨM KHÁC**.
     *   Sử dụng dấu TÍCH XANH (V) cho ưu điểm của mình và dấu GẠCH CHÉO ĐỎ (X) cho nhược điểm đối thủ.
     *   So sánh về: Giá, Thành phần, Độ bền, Quà tặng, Bảo hành.
@@ -122,15 +127,21 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 13. FAQ Section (Câu hỏi thường gặp)
 *   **Mục đích:** Xóa bỏ những nghi ngại cuối cùng.
-*   **Cấu trúc cụ thể:**
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
     *   Dạng Accordion (Bấm vào để hiện câu trả lời).
     *   Tối thiểu 4 câu hỏi về: Độ an toàn, Thời gian giao hàng, Chính sách đổi trả, Cách kiểm tra hàng chính hãng.
 
-#### 14. Tiered Pricing (Chiến thuật bảng giá Combo)
-*   **Mục đích:** Thúc đẩy khách hàng mua nhiều hơn để nhận ưu đãi.
-*   **Cấu trúc cụ thể:**
-    *   3 khối giá: Mua 1 (Giá gốc) - Mua 2 (Giảm 20%) - Mua 3 (Hời nhất - Giảm 40% + Quà).
-    *   Gói hời nhất phải có nhãn "BÁN CHẠY NHẤT" hoặc "NÊN DÙNG".
+#### 14. Tiered Pricing (Bảng giá ưu đãi)
+*   **Option 1: [Tên gói].** Giá: [Giá]. (Ảnh: `image/option/option1`).
+*   **Option 2: [Tên gói].** Giá: [Giá]. (Ảnh: `image/option/option2`).
+*   **Option 3: [Tên gói].** Giá: [Giá]. (Ảnh: `image/option/option3`).
+*   **Lưu ý:** Số lượng Option hiển thị (1, 2 hoặc 3) phải khớp chính xác với dữ liệu trong file `description`. AI PHẢI trích xuất chính xác số lượng và thông tin giá từ đây.
+    *   **Hình ảnh sản phẩm theo Option (MANDATORY):** AI phải ưu tiên tìm ảnh trong thư mục `image/option`. 
+        *   Nếu là Option 1: Tìm file có tên `option1` (ví dụ: `option1.jpg`, `option1.png`).
+        *   Nếu là Option 2: Tìm file có tên `option2`.
+        *   Nếu là Option 3: Tìm file có tên `option3`.
+        *   Nếu không có ảnh trong thư mục `image/option`, AI dùng ảnh sản phẩm chính hoặc gen ảnh combo minh họa.
+    *   **Thiết kế:** Gói hời nhất (thường là mua nhiều nhất) phải có nhãn "BÁN CHẠY NHẤT" hoặc "NÊN DÙNG" và nổi bật hơn các gói khác.
 
 #### 15. Urgency Elements (Yếu tố tạo sự gấp rút)
 *   **Mục đích:** Khiến khách hàng ra quyết định ngay lập tức.
@@ -153,12 +164,11 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
     *   Dãy icon cam kết: Đổi trả 7 ngày, Kiểm hàng trước khi trả tiền, Bảo hành 12 tháng.
     *   Hình ảnh Thẻ Bảo Hành của thương hiệu.
 
-#### 18. Visual Logistics (Quy trình đóng gói & Vận chuyển)
-*   **Mục đích:** Chứng minh sự chuyên nghiệp và uy tín của shop.
-*   **Cấu trúc cụ thể:**
-    *   Ảnh/Video nhân viên đóng gói hàng có lớp chống sốc dày.
-    *   Hình ảnh các đối tác vận chuyển lớn (GHTK, Viettel Post, v.v.).
-
+#### 18. Visual Logistics (Vận hành, Kho bãi & Giao hàng)
+*   **Mục đích:** Chứng minh sự chuyên nghiệp, uy tín và quy mô của shop để khách hàng yên tâm đặt hàng.
+*   **Cấu trúc cụ thể (BẮT BUỘC):**
+    *   Đây là nơi hiển thị các thông tin về: Kho hàng nội địa, quy trình đóng gói, cam kết thời gian giao hàng.
+    *   **Trình bày:** Sử dụng các Card ngắn gọn, súc tích. Tuyệt đối KHÔNG trình bày dưới dạng văn bản dài (Wall of text).
 
 #### 19. Post-Purchase Experience (Trang cảm ơn & Xác nhận)
 *   **Mục đích:** Chuyên nghiệp hóa quy trình và giảm tỷ lệ đơn ảo.
@@ -284,7 +294,10 @@ Hệ thống truy cập thư mục được cung cấp, đọc tất cả các t
 
 #### 14. Tiered Pricing (Bảng giá Combo)
 *   **Cách xử lý:** Lấy thông tin các gói ưu đãi từ file `description`.
-*   **Bước thực hiện:** AI phải đọc và lấy linh hoạt số lượng lựa chọn mua hàng dựa trên nội dung mô tả (có thể là 1, 2, hoặc 3 gói). KHÔNG bắt buộc hiển thị cứng 3 gói nữa. Số lượng hiển thị phụ thuộc hoàn toàn vào file dữ liệu đầu vào.
+*   **Bước thực hiện:** 
+    1. AI phải đọc và lấy linh hoạt số lượng lựa chọn mua hàng dựa trên nội dung mô tả (có thể là 1, 2, hoặc 3 gói). 
+    2. **Mapping ảnh:** BẮT BUỘC lấy ảnh từ thư mục `image/option` tương ứng với từng option (`option1`, `option2`, `option3`). Nếu không có thư mục này hoặc file này, AI mới được phép dùng ảnh sản phẩm chung hoặc dùng `generate_image` để tạo ảnh combo (Ví dụ: gen ảnh 2 chai kem đặt cạnh nhau cho gói mua 2).
+    3. Xác định gói "Hời nhất" để gắn tag nổi bật.
 
 #### 15. Urgency Elements (Yếu tố gấp rút)
 *   **Cách xử lý:** Tự tạo dựa trên chiến dịch marketing.
@@ -376,6 +389,9 @@ Tuyệt đối không gò bó giao diện. Ưu tiên thiết kế "phá vỡ khu
 
 ### 3. Tối ưu Hiển thị & Di động (Mobile-First Enforcement)
 *   **BẮT BUỘC:** Kiểm tra hiển thị trên thiết bị di động (chiều rộng < 450px).
+*   **Độ tương phản & Readability (CRITICAL):** Trên Mobile, AI phải đảm bảo độ tương phản cao cho tất cả văn bản. 
+    *   Nếu sử dụng Text Gradient (hồng/cam/xanh) trên nền sáng, PHẢI tăng độ đậm (font-bold) và kích thước chữ. 
+    *   Tuyệt đối KHÔNG để chữ mảnh (font-light/thin) kết hợp với màu sắc nhạt trên nền trắng.
 *   **Navigation:** Trên Mobile (screen < 768px), bắt buộc sử dụng **Hamburger Menu** (Icon 3 gạch) bên phải và Logo bên trái. Tuyệt đối không để text menu tràn lan gây đè chữ.
 *   **Typography:** Tiêu đề H1/H2 trên mobile không được vượt quá `text-3xl` hoặc `text-4xl` để tránh tràn dòng/vỡ layout.
 *   **Padding/Gap:** Đảm bảo container trên mobile luôn có `px-4` hoặc `px-6`. Khoảng cách giữa các phần tử (Gap) tối thiểu là `gap-4`.

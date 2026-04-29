@@ -24,9 +24,11 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **QUY TẮC NỘI DUNG:** Video/GIF phải thể hiện ĐÚNG hành động mô tả (VD: tán kem, bóc mặt nạ). Nếu không có video thực tế phù hợp, PHẢI dùng `generate_image` để tạo ảnh thay thế hoặc đổi text mô tả cho khớp với video (VD: giới thiệu bao bì).
 *   **Nội dung Video/GIF:** Cảnh một cô gái bóc miếng mặt nạ gel pha lê màu xanh, đắp nhẹ nhàng lên vùng mắt. Miếng gel ôm sát, không bị rơi khi di chuyển.
 
-## 5. Pain Point & Solution
-*   **Nỗi đau:** "Bạn mệt mỏi vì đôi mắt 'Gấu Trúc' sau những đêm thức khuya làm việc hay lướt điện thoại?"
-*   **Giải pháp:** WIS Crystal Smooth - Không chỉ là mặt nạ mắt, đó là "liều thuốc bổ" phục hồi sinh khí cho cửa sổ tâm hồn của bạn.
+## 5. Pain Point & Solution (Bố cục Before & After)
+*   **Nỗi đau:** [Câu hỏi về vấn đề/nỗi đau của khách hàng].
+*   **Giải pháp:** [Tên sản phẩm] - Giải pháp giải quyết triệt để vấn đề trên.
+*   **Hình ảnh (BẮT BUỘC):** Ảnh Split-screen (Trước và Sau). 
+    *   *Quy tắc:* AI phải rà soát ảnh so sánh trong dữ liệu. Nếu không có, BẮT BUỘC dùng `generate_image` để tạo ảnh so sánh hiệu quả rõ rệt (Ví dụ: da sạm vs da sáng).
 *   **Lưu ý thiết kế:** Áp dụng bố cục **Split (chia đôi màn hình)**. Tuyệt đối KHÔNG đè HTML text lên ảnh có sẵn text/đồ họa phức tạp. Sử dụng ảnh gốc dạng `object-contain` một bên, bên còn lại là khối màu solid chứa văn bản.
 
 ## 6. Technology & Ingredients (Bố cục Card Grid - Ảnh lớn h-64)
@@ -36,7 +38,7 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
     *   *Công dụng:* Làm dịu tức thì, phục hồi hàng rào bảo vệ da, giảm kích ứng cho vùng da nhạy cảm nhất.
 *   **Thành phần 3: Cải bắp nhăn.** (Ảnh: Hình ảnh nghệ thuật của lá cải bắp nhăn mọng nước kết hợp với bối cảnh phòng Lab hiện đại).
     *   *Công dụng:* Nuôi dưỡng bề mặt da mịn màng, làm mờ các vết chân chim nhỏ và cấp ẩm sâu.
-*   **QUY TẮC MINH HỌA:** Ảnh PHẢI liên quan trực tiếp đến thành phần. AI dùng `generate_image` để tạo ảnh bối cảnh (Lifestyle) cho thành phần kết hợp với sản phẩm thực tế để tạo sự tin cậy. Ảnh hiển thị lớn (`h-64` hoặc `h-72`).
+*   **QUY TẮC MINH HỌA:** Ảnh PHẢI liên quan trực tiếp đến thành phần. AI dùng `generate_image` để tạo ảnh bối cảnh (Lifestyle) cho thành phần kết hợp với sản phẩm thực tế để tạo sự tin cậy theo công thức: **Sản phẩm + Nguyên liệu tươi** (Ví dụ: Tuýp kem đặt cạnh những lá rau má tươi mọng). Ảnh hiển thị lớn (`h-64` hoặc `h-72`).
 
 ## 7. Visual Product Gallery (Góc nhìn chân thực & Lifestyle)
 *   **Ảnh 1 (Lifestyle - AI Generated):** Hũ mặt nạ WIS đặt trên bàn trang điểm gỗ cao cấp, cạnh một bình hoa nhỏ và gương soi.
@@ -87,11 +89,11 @@ Dưới đây là nội dung chi tiết cho từng section của Landing Page, �
 *   **Hỏi:** Một hũ dùng được bao lâu?
 *   **Đáp:** Một hũ gồm 60 miếng (30 cặp), nếu dùng hàng ngày bạn có thể sử dụng liên tục trong 1 tháng.
 
-## 14. Tiered Pricing
-*   *(Ghi chú: Lấy linh hoạt các tùy chọn gói dựa trên file description. Dưới đây là ví dụ có 3 gói, nhưng nếu data chỉ có 1 hoặc 2 gói thì chỉ hiển thị số lượng tương ứng)*
-*   **Gói 1: Mua thử.** 1 Hũ giá 140.800đ (Tiết kiệm 46%).
-*   **Gói 2: Liệu trình 2 tháng.** 2 Hũ giá 260.000đ (Tặng 1 mặt nạ môi).
-*   **Gói 3: Chăm sóc toàn diện.** 3 Hũ giá 360.000đ (Freeship + Tặng 2 mặt nạ môi).
+## 14. Tiered Pricing (Bảng giá ưu đãi)
+*   **Option 1: [Tên gói].** Giá: [Giá]. (Ảnh: `image/option/option1`).
+*   **Option 2: [Tên gói].** Giá: [Giá]. (Ảnh: `image/option/option2`).
+*   **Option 3: [Tên gói].** Giá: [Giá]. (Ảnh: `image/option/option3`).
+*   **Lưu ý:** Số lượng Option hiển thị (1, 2 hoặc 3) phải khớp chính xác với dữ liệu trong file `description`. Nếu không có ảnh trong thư mục `image/option`, AI dùng ảnh sản phẩm chính hoặc gen ảnh combo minh họa. Gói tốt nhất phải có tag "BÁN CHẠY" hoặc "ƯU ĐÃI LỚN".
 
 ## 15. Urgency Elements
 *   **Đếm ngược:** [Ưu đãi kết thúc sau 00:14:55]
