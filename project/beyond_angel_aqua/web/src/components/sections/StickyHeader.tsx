@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useOrder } from "@/components/OrderContext";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function StickyHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,9 +51,15 @@ export default function StickyHeader() {
           {/* Logo */}
           <div 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-2xl font-black tracking-tighter cursor-pointer text-gray-900 flex items-center gap-1"
+            className="cursor-pointer flex items-center"
           >
-            BEYOND<span className="text-brand">.</span>
+            <Image 
+              src="/logo.png" 
+              alt="Tom Hagen Logo" 
+              width={200} 
+              height={60} 
+              className="h-12 md:h-16 w-auto object-contain transition-all duration-300"
+            />
           </div>
 
           {/* Desktop Menu */}
@@ -70,16 +77,31 @@ export default function StickyHeader() {
           </nav>
           
           <div className="flex items-center gap-3">
-            <button
+            <motion.button
               onClick={() => openModal()}
-              className={`px-5 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
+              animate={{ 
+                scale: isScrolled ? [1, 1.05, 1] : 1,
+                rotate: isScrolled ? [0, -1, 1, -1, 0] : 0,
+                boxShadow: isScrolled ? [
+                  "0 0 0 0 rgba(75, 179, 227, 0)",
+                  "0 0 0 15px rgba(75, 179, 227, 0.4)",
+                  "0 0 0 0 rgba(75, 179, 227, 0)"
+                ] : "none"
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "easeInOut"
+              }}
+              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${
                 isScrolled 
-                  ? "bg-brand text-white shadow-lg shadow-brand/30 scale-100 opacity-100" 
+                  ? "bg-brand text-white shadow-lg scale-100 opacity-100" 
                   : "bg-white/80 text-brand scale-95 opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto border border-brand/20"
               }`}
             >
               MUA NGAY
-            </button>
+            </motion.button>
 
             {/* Hamburger Toggle */}
             <button 
