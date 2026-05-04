@@ -76,8 +76,8 @@ Hệ thống cần nắm vững 20 hạng mục nội dung tiêu chuẩn cần c
     *   Văn phong: Sử dụng các thuật ngữ chuyên môn nhưng dễ hiểu, nhấn mạnh công dụng của từng thành phần.
     *   **Bố cục:** Bắt buộc dùng Card Grid (Ảnh trên, Text dưới) để đảm bảo tính chuyên nghiệp.
     *   **Tính liên quan của hình ảnh (CRITICAL):** Mỗi thành phần liệt kê PHẢI có hình ảnh minh họa liên quan mật thiết. TUYỆT ĐỐI KHÔNG dùng ảnh sản phẩm chung chung cho các thẻ thành phần.
-    *   **Sử dụng AI:** Tuyệt đối phải sử dụng AI để tạo ra tất cả các ảnh về nguyên liệu tươi/nguồn gốc thành phần với chất lượng cao nhất, không sử dụng ảnhstock có sẵn.  AI PHẢI dùng `generate_image` để tạo ảnh bối cảnh theo công thức: **[Ảnh sản phẩm thực tế làm tham chiếu] + [Mô tả về nguyên liệu tươi/nguồn gốc thành phần]**. 
-    *   *Ví dụ:* Nếu thành phần là Vitamin C, ảnh phải là quả cam tươi đặt cạnh sản phẩm. Nếu là HA, ảnh phải là các giọt nước tinh thể đặt cạnh sản phẩm.
+    *   **Sử dụng AI:** Tuyệt đối phải sử dụng AI để tạo ra tất cả các ảnh về nguyên liệu tươi/nguồn gốc thành phần với chất lượng cao nhất, không sử dụng ảnhstock có sẵn.  AI PHẢI dùng `generate_image` để tạo ảnh bối cảnh theo công thức: **[Ảnh sản phẩm thực tế làm tham chiếu] + [Mô tả nguyên liệu] + [Yêu cầu tuyệt đối không render text rác/huy hiệu khuyến mãi]**. 
+    *   *Ví dụ:* Nếu thành phần là Vitamin C, ảnh phải là quả cam tươi đặt cạnh sản phẩm. Prompt BẮT BUỘC có câu: "Tuyệt đối không chứa bất kỳ văn bản/text nào, không có huy hiệu khuyến mãi (no badges, no promotional text, no sale tags, no watermarks), chỉ hiển thị hình dáng, màu sắc vỏ hộp sản phẩm thuần túy trong bối cảnh."
     *   **Chất lượng hiển thị:** Ảnh trong Card Ingredients phải lớn, rõ nét trên cả Desktop và Mobile. Sử dụng `h-64` hoặc `h-72` để tăng diện tích hiển thị ảnh. Phải đảm bảo rằng khi hiển thị trên Mobile thì ảnh cũng sẽ hiển thị full và không bị cắt bất cứ phần nào.
     *   Bố cục: Card Grid chuẩn (Ảnh lớn ở trên, Text ở dưới).
 
@@ -119,7 +119,7 @@ Hệ thống cần nắm vững 20 hạng mục nội dung tiêu chuẩn cần c
     *   Đoạn trích dẫn ngắn (Quote) khẳng định sự hài lòng về chất lượng sản phẩm.
 *   **QUY TẮC HÌNH ẢNH SẢN PHẨM TRONG TAY CHUYÊN GIA (Product Accuracy):**
     *   Khi dùng `generate_image` để tạo ảnh chuyên gia, sản phẩm trong tay chuyên gia PHẢI giống với sản phẩm thực tế đang được quảng bá. AI PHẢI truyền ảnh sản phẩm gốc (từ thư mục dữ liệu đầu vào) vào tham số `ImagePaths` của tool `generate_image` để làm hình ảnh tham chiếu (reference).
-    *   **Prompt phải mô tả chi tiết sản phẩm:** Bao gồm màu sắc bao bì, hình dạng chai/tuýp/hũ, logo thương hiệu, để AI tạo ra hình ảnh sản phẩm trong tay chuyên gia trùng khớp tối đa với sản phẩm thật.
+    *   **Prompt phải mô tả chi tiết sản phẩm:** Bao gồm màu sắc bao bì, hình dạng chai/tuýp/hũ, logo thương hiệu, để AI tạo ra hình ảnh sản phẩm trong tay chuyên gia trùng khớp tối đa với sản phẩm thật. BẮT BUỘC thêm cụm từ "Clean product only, no extra text or promotional badges on the packaging, no watermarks" vào prompt để tránh text rác.
     *   Tuyệt đối KHÔNG được để sản phẩm trong ảnh chuyên gia trông khác biệt hoàn toàn so với sản phẩm thực tế (sai màu, sai hình dạng, sai nhãn hiệu). Nếu kết quả gen ảnh lần đầu chưa giống, AI PHẢI gen lại với prompt chi tiết hơn.
 
 #### 12. Feedback Wall (Bức tường phản hồi Shopee Style)
@@ -230,6 +230,8 @@ Hệ thống truy cập thư mục được cung cấp (gồm description, image
 ### 4. Quy tắc Bổ sung & Sáng tạo (AI Generation)
 *   **Điều kiện:** Nếu số lượng hình ảnh cung cấp nghèo nàn hoặc bị lặp lại quá nhiều, AI PHẢI dùng công cụ `generate_image`.
 *   **Mục tiêu:** Tạo thêm các ảnh Lifestyle sang trọng, ảnh Swatch (bôi thử lên tay), ảnh Macro cận cảnh chất kem... để làm phong phú phần Gallery và Visual Demo.
+*   **Loại bỏ Text/Badge rác (BẮT BUỘC):** Khi truyền ảnh gốc vào tham số `ImagePaths` để làm tham chiếu, do ảnh gốc thường chứa nhiều text quảng cáo (Sale, Freeship, tên shop, v.v.), AI **PHẢI BẮT BUỘC** đưa vào prompt câu lệnh ngăn chặn việc render text rác. 
+    *   **Prompt mẫu cần bổ sung:** "Tuyệt đối không chứa bất kỳ văn bản/text nào, không có huy hiệu khuyến mãi (no badges, no promotional text, no sale tags, no watermarks), chỉ hiển thị hình dáng, màu sắc vỏ hộp sản phẩm thuần túy trong bối cảnh."
 
 ### 5. Quy tắc Kích Thước Ảnh AI Phù Hợp Khung Hiển Thị (AI Image Dimension Matching)
 *   **Nguyên tắc cốt lõi:** Khi dùng `generate_image` để tạo ảnh minh họa cho các section sử dụng bố cục Card Grid (như Technology & Ingredients), AI PHẢI đảm bảo ảnh được gen có tỷ lệ khung hình (aspect ratio) và bố cục nội dung phù hợp với vùng hiển thị thực tế trên giao diện.
